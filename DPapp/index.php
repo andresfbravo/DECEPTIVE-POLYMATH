@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -47,7 +47,7 @@
 						<button type="submit" class="btn btn-primary">LogIn</button>
 						<p>¿No estas registrado? <a href="signup.php">Registrate</a></p>
 					</fieldset>
-					
+
 				</form>
 			</div>
 		</div>

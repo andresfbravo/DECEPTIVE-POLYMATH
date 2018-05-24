@@ -37,32 +37,32 @@
 					<fieldset>
 						<p>
 							<label for = "userid">Documento de Identificación: </label>
-							<input type="text" class = "form-control" placeholder="Cedula de Ciudadania" id = "userid" name="userid" required = "true"/> 
+							<input type="text" class = "form-control" placeholder="Cedula de Ciudadania" id = "userid" name="userid" required = "true"/>
 						</p>
 						<p>
 							<label for="tipousuario">Tipo Usuario: </label>
 							<select id="tipousuario" name="tipo" class="form-control" required="true">
 								<option value="">Seleccione un tipo...</option>
-								<option value="{Administrador}">Administrador</option>
-								<option value="{Profesor}">Profesor</option>
-								<option value="{Estudiante}">Estudiante</option>
+								<option value="Administrador">Administrador</option>
+								<option value="Profesor">Profesor</option>
+								<option value="Estudiante">Estudiante</option>
 							</select>
 						</p>
 						<p>
 							<label for = "nombre">Primer Nombre: </label>
-							<input type = "text" class="form-control" id="nombre" placeholder="Primer Nombre" name="nombre" required = "true"/> 
+							<input type = "text" class="form-control" id="nombre" placeholder="Primer Nombre" name="nombre" required = "true"/>
 						</p>
 						<p>
 							<label for = "nombre1">Segundo Nombre: </label>
-							<input type = "text" class="form-control" id="nombre1" placeholder="Segundo Nombre" name="nombre1"/> 
+							<input type = "text" class="form-control" id="nombre1" placeholder="Segundo Nombre" name="nombre1"/>
 						</p>
 						<p>
 							<label for = "apellido">Primer Apellido: </label>
-							<input type = "text" class="form-control" id="apellido" name="apellido" placeholder="Primer Apellido" required = "true"/> 
+							<input type = "text" class="form-control" id="apellido" name="apellido" placeholder="Primer Apellido" required = "true"/>
 						</p>
 						<p>
 							<label for = "apellido1">Segundo Apellido: </label>
-							<input type = "text" class="form-control" id="apellido1" placeholder="Segundo Apellido" name="apellido1"/> 
+							<input type = "text" class="form-control" id="apellido1" placeholder="Segundo Apellido" name="apellido1"/>
 						</p>
 						<p>
 							<label for="email">E-mail:</label>
