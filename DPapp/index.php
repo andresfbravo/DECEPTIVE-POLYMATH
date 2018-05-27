@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/Login.js"></script>
 	<style type="text/css">
 	fieldset{
 		width: 30%;
@@ -40,17 +41,21 @@
 					<fieldset>
 						<p>
 							<label for="username">Username:</label>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 							<input type="email" class="form-control" id="username" placeholder="Nombre de Usuario" name="username" required="true"/>
 						</p>
 						<p>
 							<label for="password">Password: </label>
+								<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 							<input type="password"  class="form-control" id="password" placeholder="Contraseña" name="password" required="true"/>
 						</p>
-						<button type="submit" class="btn btn-primary">LogIn</button>
+						<button type="button" class="btn btn-primary" id ="login">LogIn</button>
 						<p>¿No estas registrado? <a href="signup.php">Registrate</a></p>
 					</fieldset>
-
 				</form>
+			</div>
+			<div class="col-xs-12 col sm-12 col-md-5 col-lg-4" id = "message">
+
 			</div>
 		</div>
 	</div>
