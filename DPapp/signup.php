@@ -4,10 +4,14 @@
 	<meta charset="UTF-8">
 	<title>DP aplication</title>
 	<!-- IMPORTAMOS NUESTROS ESTILOS FRAMEWORK DE BOOTSTRAP -->
+
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.theme.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme-min-css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<!-- IMPORTAMOS LOS ARCHIVOS JS DEL FRAMEWORK DE BOOTSTRAP -->
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<style type="text/css">
@@ -20,6 +24,7 @@
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top" rol="navigation">
 	<?php
+	$usertype = null;
 	session_start();
 	if (isset($_SESSION['id'])) {
 		require_once 'barramenu.php';
@@ -28,7 +33,6 @@
 	</div>
 	<div class="container">
 		<div class="row">
-
 			<div class="jumbotron">
 				<h1>Registrate!</h1>
 			</div>
@@ -40,14 +44,30 @@
 							<input type="text" class = "form-control" placeholder="Cedula de Ciudadania" id = "userid" name="userid" required = "true"/>
 						</p>
 						<p>
+
 							<label for="tipousuario">Tipo Usuario: </label>
-							<select id="tipousuario" name="tipo" class="form-control" required="true">
+							<select id="tipousuario" name="tipo" class="form-control" required="true" onChange = "addfields(this)">
 								<option value="">Seleccione un tipo...</option>
 								<option value="Administrador">Administrador</option>
 								<option value="Profesor">Profesor</option>
 								<option value="Estudiante">Estudiante</option>
 							</select>
 						</p>
+						<div class="admininfo" style= "display:none">
+							<label> Introduzca un número (en digitos 0-9):
+								<input type="tel" class="form-control" id="phone" name="phone" required = "false"  pattern="\d*"/></input>
+							 </label>
+						</div>
+						<div class="estudinfo" style= "display:none">
+							<label> Introduzca su programa académico:
+								<input type="text" class="form-control" id="progacadem" name="progacadem" required = "false" pattern= "\w+( |\w+)*"/></input>
+							 </label>
+						</div>
+						<div class="profinfo" style= "display:none">
+							<label> Introduzca la asignatura que imparte:
+								<input type="text" class="form-control" id="asignatura" name="asignatura" required = "false" pattern= "\w+( |\w+)*"/></input>
+							 </label>
+						</div>
 						<p>
 							<label for = "nombre">Primer Nombre: </label>
 							<input type = "text" class="form-control" id="nombre" placeholder="Primer Nombre" name="nombre" required = "true"/>
@@ -78,5 +98,6 @@
 			</div>
 		</div>
 	</div>
+		<script type="text/javascript" src="js/addinputs.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 require_once 'connection.php';
 /**
-* 
+*
 */
 class Usuario
 {
@@ -13,9 +13,12 @@ class Usuario
 	private $apellido1;
 	private $email;
 	private $password;
+	private $asignatura;
+	private $telefono;
+	private $progacadem;
 	function __construct()
 	{
-			
+
 	}
 
 	function getCedula(){
@@ -49,7 +52,15 @@ class Usuario
 	function getPassword(){
 		return $this->password;
 	}
-
+	function getAsignatura(){
+		return $this->asignatura;
+	}
+	function getProgAcadem(){
+		return $this->progacadem;
+	}
+	function getTelefono(){
+		return $this->telefono;
+	}
 	public function setCedula($cedula)
 	{
 		$this->cedula = $cedula;
@@ -89,13 +100,26 @@ class Usuario
 	{
 		$this->password = $password;
 	}
+	public function setAsignatura($asignatura)
+	{
+		$this->asignatura = $asignatura;
+	}
+	public function setProgAcadem($progacadem)
+	{
+		$this->progacadem = $progacadem;
+	}
+	public function setTelefono($telefono)
+	{
+		$this->telefono = $telefono;
+	}
 
 	public function saveUser()
 	{
 		try{
-					#$query = $connection->getConnection()->prepare("INSERT INTO \"Usuario\" VALUES ("this->cedula", "this->tipo", "this->nombre", "this->nombre1", "this->apellido", "this->apellido1", "this->email", "this->password")");
 			$connection = new Connection();
+			$connection->getConnection()->beginTransaction();
 			$query = $connection->getConnection()->prepare("INSERT INTO \"Usuario\" VALUES (:cedula, :tipo, :nombre, :nombre1, :apellido, :apellido1, :email, :password)");
+
 			$cedula = $this->getCedula();
 			$tipo = $this->getTipoUsuario();
 			$nombre = $this->getNombre();
@@ -108,15 +132,64 @@ class Usuario
 			$query->bindValue(':tipo', $tipo);
 			$query->bindValue(':nombre', $nombre);
 			$query->bindValue(':nombre1', $nombre1);
-			$query->bindValue(':apellido', $apellido1);
+			$query->bindValue(':apellido', $apellido);
 			$query->bindValue(':apellido1', $apellido1);
 			$query->bindValue(':email', $email);
 			$query->bindValue(':password', $password);
 			$query->execute();
+			if($tipo == "Administrador"){
+				$telefono = $this->getTelefono();
+				$queryadmin = $connection->getConnection()->prepare("INSERT INTO \"Administrador\" VALUES (:cedula, :tipo, :nombre, :nombre1, :apellido, :apellido1, :email, :password)");
+				$queryadmin->bindValue(':cedula', $cedula);
+				$queryadmin->bindValue(':tipo', $tipo);
+				$queryadmin->bindValue(':nombre', $nombre);
+				$queryadmin->bindValue(':nombre1', $nombre1);
+				$queryadmin->bindValue(':apellido', $apellido);
+				$queryadmin->bindValue(':apellido1', $apellido1);
+				$queryadmin->bindValue(':email', $email);
+				$queryadmin->bindValue(':password', $password);
+				$queryadmin->execute();
+				$queryphone = $connection->getConnection()->prepare("INSERT INTO \"Telefonos\" VALUES (:cedula,:telefono)");
+				echo $cedula;
+				$queryphone->bindValue(':cedula', $cedula);
+				$queryphone->bindValue('telefono', $telefono);
+				$queryphone->execute();
+			}
+			elseif ($tipo == "Profesor") {
+				$asignatura = $this->getAsignatura();
+				$queryprof = $connection->getConnection()->prepare("INSERT INTO \"Profesores\" VALUES (:cedula, :tipo, :nombre, :nombre1, :apellido, :apellido1, :email, :password, :asignatura)");
+				$queryprof->bindValue(':cedula', $cedula);
+				$queryprof->bindValue(':tipo', $tipo);
+				$queryprof->bindValue(':nombre', $nombre);
+				$queryprof->bindValue(':nombre1', $nombre1);
+				$queryprof->bindValue(':apellido', $apellido);
+				$queryprof->bindValue(':apellido1', $apellido1);
+				$queryprof->bindValue(':email', $email);
+				$queryprof->bindValue(':password', $password);
+				$queryprof->bindValue(':asignatura', $asignatura);
+				$queryprof->execute();
+			}
+			elseif ($tipo == "Estudiante") {
+				$progacadem = $this->getProgAcadem();
+				$queryest = $connection->getConnection()->prepare("INSERT INTO \"Estudiantes\" VALUES (:cedula, :tipo, :nombre, :nombre1, :apellido, :apellido1, :email, :password, :progacadem)");
+				$queryest->bindValue(':cedula', $cedula);
+				$queryest->bindValue(':tipo', $tipo);
+				$queryest->bindValue(':nombre', $nombre);
+				$queryest->bindValue(':nombre1', $nombre1);
+				$queryest->bindValue(':apellido', $apellido);
+				$queryest->bindValue(':apellido1', $apellido1);
+				$queryest->bindValue(':email', $email);
+				$queryest->bindValue(':password', $password);
+				$queryest->bindValue(':progacadem', $progacadem);
+				$queryest->execute();
+			}
 			echo "Registro exitoso";
+			$connection->getConnection()->commit();
 		} catch (PDOException $e){
+			$connection->getConnection()-> rollback();
 			echo "Error en la inserccion ...".$e->getMessage();
 		}
+
 	}
 }
 ?>
