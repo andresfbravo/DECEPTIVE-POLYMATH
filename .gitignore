@@ -6,3 +6,6 @@ DPapp/js/npm.js
 DPapp/js/bootstrap.js
 DPapp/js/bootstrap.min.js
 *.svg
+DPapp/css/bootstrap.css
+DPapp/css/bootstrap-theme.min.css
+DPapp/css/bootstrap-theme.css

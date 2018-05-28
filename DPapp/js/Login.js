@@ -2,12 +2,12 @@ $(document).ready(function(){
   $("#login").click(function(){
     var username =$('#username').val();
     var password = $('#password').val();
-    console.log(username);
+    console.log(username, password);
     $.ajax({
       type:"POST",
       dataType :'json',
-      url:'/classes/LoginAjax.php',
-      data:{Username:username, Password:password},
+      url:'http://localhost/DPapp/classes/LoginAjax.php',
+      data:{username:username, password:password},
 
       success:function(response){
         if(response.respuesta == true){
