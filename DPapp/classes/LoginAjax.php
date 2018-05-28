@@ -19,6 +19,7 @@
             $_SESSION['username'] = $user[0][0];
             $_SESSION['tipo_usuario'] = $user[0][1];
             $_SESSION['password'] = $user[0][7];
+            print_r($user)
             $errormessage = "Inicio de Sesión exitoso.";
             /*
             if($_SESSION['tipo_usuario'] == "Administrador"):

@@ -6,7 +6,7 @@ $(document).ready(function(){
     $.ajax({
       type:"POST",
       dataType :'json',
-      url:'http://localhost/DPapp/classes/LoginAjax.php',
+      url:'http://localhost/deceptive-polymath/DPapp/classes/LoginAjax.php',
       data:{username:username, password:password},
       success: function(response){
         if(response.respuesta == true){
@@ -18,6 +18,7 @@ $(document).ready(function(){
         }
       },
       error: function(response){
+        console.log("Error");
         window.alert(response.mensaje);
       }
     });
