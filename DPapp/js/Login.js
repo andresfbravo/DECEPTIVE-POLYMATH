@@ -2,7 +2,7 @@ $(document).ready(function(){
   $("#login").click(function(){
     var username =$('#username').val();
     var password = $('#password').val();
-    console.log(username, password);
+    #console.log(username, password);
     
     $.ajax({
       type:"POST",
@@ -14,7 +14,10 @@ $(document).ready(function(){
           if(response.tipo_usuario=="Administrador"){            
             window.location = 'VistasUsuarios/Vistaadministrador.php';
           }
-        }else{
+        }else if(response.tipo_usuario == "Profesor"){
+          window.location = 'VistasUsuarios/Vistaprofesor.php';
+        }
+        else if(response.tipo_usuario == "Estudiante"){
           window.alert(response.mensaje);
         }
       },
