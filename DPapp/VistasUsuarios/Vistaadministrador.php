@@ -16,6 +16,10 @@
 <body>
 <?php
 session_start();
+print_r($_SESSION);
+if(!($_SESSION['login'])){
+  header('location: http://localhost/deceptive-polymath/DPapp/');
+ }
  require_once 'barramenuadmin.php';
 
 ?>

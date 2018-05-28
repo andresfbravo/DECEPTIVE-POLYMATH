@@ -3,6 +3,7 @@ $(document).ready(function(){
     var username =$('#username').val();
     var password = $('#password').val();
     console.log(username, password);
+    
     $.ajax({
       type:"POST",
       dataType :'json',
@@ -10,7 +11,7 @@ $(document).ready(function(){
       data:{username:username, password:password},
       success: function(response){
         if(response.respuesta == true){
-          if($_SESSION['tipo_usuario']=="Administrador"){            
+          if(response.tipo_usuario=="Administrador"){            
             window.location = 'VistasUsuarios/Vistaadministrador.php';
           }
         }else{

@@ -3,7 +3,6 @@
     $connection = new Connection();
     $okmessage = false;
     $errormessage = 'I dunno';
-
     if(isset($_POST['username'],$_POST['password'])):
       if($_POST['username']!=""):
         if($_POST['password']!=""):
@@ -16,10 +15,12 @@
             $okmessage = true;
             $user = $query->fetchAll();
             session_start();
+
             $_SESSION['username'] = $user[0][0];
             $_SESSION['tipo_usuario'] = $user[0][1];
             $_SESSION['password'] = $user[0][7];
-            print_r($user)
+            $_SESSION['login'] = true;
+            #print_r($user);
             $errormessage = "Inicio de Sesión exitoso.";
             /*
             if($_SESSION['tipo_usuario'] == "Administrador"):
@@ -32,18 +33,26 @@
               echo "Error";
             endif;
             */
+           $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => $_SESSION['tipo_usuario']);
           else:
+             $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => null);
             $errormessage = 'Usuario o Contraseña incorrecta.';
           endif;
         else:
+           $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => null);
           $errormessage = 'Contraseña incorrecta.';
         endif;
       else:
+         $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => null);
           $errormessage = 'Todos los datos son requeridos.';
       endif;
-
+  
+    else:
+      echo ("AQUI");
+       $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => null);
     endif;
-    $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage);
+
+   
     echo json_encode($Jsonout);
 
 ?>

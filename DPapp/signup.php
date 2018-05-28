@@ -5,8 +5,8 @@
 	<title>DP aplication</title>
 	<!-- IMPORTAMOS NUESTROS ESTILOS FRAMEWORK DE BOOTSTRAP -->
 
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.theme.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme-min-css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<!-- IMPORTAMOS LOS ARCHIVOS JS DEL FRAMEWORK DE BOOTSTRAP -->
 
@@ -22,15 +22,6 @@
 	</style>
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top" rol="navigation">
-	<?php
-	$usertype = null;
-	session_start();
-	if (isset($_SESSION['id'])) {
-		require_once 'barramenu.php';
-	}
-	?>
-	</div>
 	<div class="container">
 		<div class="row">
 			<div class="jumbotron">
