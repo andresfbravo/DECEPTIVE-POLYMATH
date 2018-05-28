@@ -21,14 +21,7 @@
 	</style>
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top" rol="navigation">
-	<?php
-	session_start();
-	if (isset($_SESSION['id'])) {
-		require_once 'barramenu.php';
-	}
-	?>
-	</div>
+
 	<div class="container">
 		<div class="row">
 			<div class="jumbotron">
@@ -50,7 +43,7 @@
 							<input type="password"  class="form-control" id="password" placeholder="Contraseña" name="password" required="true"/>
 						</p>
 						<button type="button" class="btn btn-primary" id ="login">LogIn</button>
-						<p>¿No estas registrado? <a href="signup.php">Registrate</a></p>
+						<p>¿No estás registrado? <a href="signup.php">Regístrate</a></p>
 					</fieldset>
 				</form>
 			</div>

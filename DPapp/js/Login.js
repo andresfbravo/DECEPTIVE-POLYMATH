@@ -10,7 +10,7 @@ $(document).ready(function(){
       data:{username:username, password:password},
       success: function(response){
         if(response.respuesta == true){
-          window.location = 'Principal.php';
+          window.location = 'VistasUsuarios/Vistaadministrador.php';
         }else{
           window.alert(response.mensaje);
         }
