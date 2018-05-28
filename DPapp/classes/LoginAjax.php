@@ -2,7 +2,7 @@
     require_once 'connection.php';
     $connection = new Connection();
     $okmessage = false;
-    $errormessage = 'I dunno';
+    $errormessage = '';
     if(isset($_POST['username'],$_POST['password'])):
       if($_POST['username']!=""):
         if($_POST['password']!=""):
@@ -48,7 +48,6 @@
       endif;
   
     else:
-      echo ("AQUI");
        $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => null);
     endif;
 
