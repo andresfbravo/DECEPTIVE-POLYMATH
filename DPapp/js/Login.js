@@ -10,7 +10,9 @@ $(document).ready(function(){
       data:{username:username, password:password},
       success: function(response){
         if(response.respuesta == true){
-          window.location = 'VistasUsuarios/Vistaadministrador.php';
+          if($_SESSION['tipo_usuario']=="Administrador"){            
+            window.location = 'VistasUsuarios/Vistaadministrador.php';
+          }
         }else{
           window.alert(response.mensaje);
         }
