@@ -8,13 +8,15 @@ $(document).ready(function(){
       dataType :'json',
       url:'http://localhost/DPapp/classes/LoginAjax.php',
       data:{username:username, password:password},
-
-      success:function(response){
+      success: function(response){
         if(response.respuesta == true){
-          $("#message").html(response.message);
+          window.location = 'Principal.php';
         }else{
-          $("#message").html(response.message);
+          window.alert(response.mensaje);
         }
+      },
+      error: function(response){
+        window.alert(response.mensaje);
       }
     });
   });

@@ -17,8 +17,20 @@
             $user = $query->fetchAll();
             session_start();
             $_SESSION['username'] = $user[0][0];
+            $_SESSION['tipo_usuario'] = $user[0][1];
             $_SESSION['password'] = $user[0][7];
             $errormessage = "Inicio de Sesión exitoso.";
+            /*
+            if($_SESSION['tipo_usuario'] == "Administrador"):
+              echo "Administrador";
+            elseif($_SESSION['tipo_usuario'] == "Profesor"):
+              echo "Profesor";
+            elseif($_SESSION['tipo_usuario'] == "Estudiante"):
+              echo "Estudiante";
+            else:
+              echo "Error";
+            endif;
+            */
           else:
             $errormessage = 'Usuario o Contraseña incorrecta.';
           endif;
@@ -32,4 +44,5 @@
     endif;
     $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage);
     echo json_encode($Jsonout);
+
 ?>
