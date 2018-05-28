@@ -41,7 +41,7 @@
 					<fieldset>
 						<p>
 							<label for = "userid">Documento de Identificación: </label>
-							<input type="text" class = "form-control" placeholder="Cedula de Ciudadania" id = "userid" name="userid" required = "true"/>
+							<input type="number" class = "form-control" placeholder="Cedula de Ciudadania" id = "userid" name="userid" required = "true"/>
 						</p>
 						<p>
 
@@ -55,7 +55,7 @@
 						</p>
 						<div class="admininfo" style= "display:none">
 							<label> Introduzca un número (en digitos 0-9):
-								<input type="tel" class="form-control" id="phone" name="phone" required = "false"  pattern="\d*"/></input>
+								<input type="number" class="form-control" id="phone" name="phone" required = "false"  pattern="\d*"/></input>
 							 </label>
 						</div>
 						<div class="estudinfo" style= "display:none">
@@ -70,19 +70,19 @@
 						</div>
 						<p>
 							<label for = "nombre">Primer Nombre: </label>
-							<input type = "text" class="form-control" id="nombre" placeholder="Primer Nombre" name="nombre" required = "true"/>
+							<input type = "text" class="form-control" id="nombre" placeholder="Primer Nombre" name="nombre" pattern= "\w+" required = "true"/>
 						</p>
 						<p>
 							<label for = "nombre1">Segundo Nombre: </label>
-							<input type = "text" class="form-control" id="nombre1" placeholder="Segundo Nombre" name="nombre1"/>
+							<input type = "text" class="form-control" id="nombre1" placeholder="Segundo Nombre" pattern= "\w+" name="nombre1"/>
 						</p>
 						<p>
 							<label for = "apellido">Primer Apellido: </label>
-							<input type = "text" class="form-control" id="apellido" name="apellido" placeholder="Primer Apellido" required = "true"/>
+							<input type = "text" class="form-control" id="apellido" name="apellido" placeholder="Primer Apellido" pattern= "\w+" required = "true"/>
 						</p>
 						<p>
 							<label for = "apellido1">Segundo Apellido: </label>
-							<input type = "text" class="form-control" id="apellido1" placeholder="Segundo Apellido" name="apellido1"/>
+							<input type = "text" class="form-control" id="apellido1" placeholder="Segundo Apellido" pattern= "\w+" name="apellido1"/>
 						</p>
 						<p>
 							<label for="email">E-mail:</label>
