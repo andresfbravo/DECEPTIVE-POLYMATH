@@ -35,7 +35,7 @@
 						<p>
 							<label for="username">Username:</label>
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input type="text" class="form-control" id="username" placeholder="Nombre de Usuario" name="username" required="true"/>
+							<input type="text" class="form-control" id="username" placeholder="Nombre de Usuario" name="username"  pattern="[0-9]*" required="true"/>
 						</p>
 						<p>
 							<label for="password">Password: </label>
