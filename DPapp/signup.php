@@ -41,7 +41,7 @@
 					<fieldset>
 						<p>
 							<label for = "userid">Documento de Identificación: </label>
-							<input type="number" class = "form-control" placeholder="Cedula de Ciudadania" id = "userid" name="userid" required = "true"/>
+							<input type="number" class = "form-control" placeholder="Cedula de Ciudadania" id = "userid" name="userid" pattern="[0-9]*" required = "true"/>
 						</p>
 						<p>
 
@@ -55,7 +55,7 @@
 						</p>
 						<div class="admininfo" style= "display:none">
 							<label> Introduzca un número (en digitos 0-9):
-								<input type="number" class="form-control" id="phone" name="phone" required = "false"  pattern="\d*"/></input>
+								<input type="number" class="form-control" id="phone" name="phone" required = "false"  pattern="[0-9]*"/></input>
 							 </label>
 						</div>
 						<div class="estudinfo" style= "display:none">
