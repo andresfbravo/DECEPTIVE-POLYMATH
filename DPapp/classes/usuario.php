@@ -183,11 +183,20 @@ class Usuario
 				$queryest->bindValue(':progacadem', $progacadem);
 				$queryest->execute();
 			}
-			echo "Registro exitoso";
 			$connection->getConnection()->commit();
+			echo "<script>
+			alert('Registro Exitoso.');
+			window.location.href = 'http://localhost/deceptive-polymath/DPapp/';
+			</script>";
+
 		} catch (PDOException $e){
 			$connection->getConnection()-> rollback();
-			echo "Error en la inserccion ...".$e->getMessage();
+			#echo "Error en la inserccion ...".$e->getMessage();
+			echo "<script>
+			alert('Error al registrar, intente de nuevo.');
+			window.location.href = 'http://localhost/deceptive-polymath/DPapp/signup.php';
+			</script>";
+
 		}
 
 	}

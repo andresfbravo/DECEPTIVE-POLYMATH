@@ -7,7 +7,7 @@ $usuario->setNombre($_POST['nombre']);
 if($_POST['nombre1']==''){
 	$_POST['nombre1'] = null;
 }
-$usuario->setNombre1($_POST['nombre1']);	
+$usuario->setNombre1($_POST['nombre1']);
 $usuario->setApellido($_POST['apellido']);
 #echo $usuario->getApellido();
 if($_POST['apellido1']==''){
@@ -26,6 +26,7 @@ if ($usertype == "Estudiante"){
 if ($usertype == "Profesor"){
   $usuario->setAsignatura($_POST['asignatura']);
 }
-print_r($usuario);
+#print_r($usuario);
 $usuario->saveUser();
+
 ?>
