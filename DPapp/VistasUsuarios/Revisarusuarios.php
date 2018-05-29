@@ -19,10 +19,13 @@
   color: #588c7e;
   font-family: monospace;
   font-size: 12px;
-  text-align: left;
+  text-align: center;
+  margin-left:10px;
+  margin-right: 20 px;
     }
  th {
   background-color: #588c7e;
+  text-align: center;
   color: white;
    }
  tr:nth-child(even) {background-color: #f2f2f2}
