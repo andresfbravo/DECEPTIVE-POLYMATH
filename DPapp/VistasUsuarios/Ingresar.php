@@ -60,7 +60,7 @@ color: #FAFAFA;
       <div class="btn-group" style="width:100%">
       <a href="/deceptive-polymath/DPapp/VistasUsuarios/Ingresarmateria.php" style="color: #FAFAFA"><button style="color: #FAFAFA"> Materia</button></a>
       <a href="/deceptive-polymath/DPapp/VistasUsuarios/Ingresartema.php" style="color: #FAFAFA"><button style="color: #FAFAFA">Tema</button></a>
-      <button><a href="#">Pregunta</a></button>
+      <a href="/deceptive-polymath/DPapp/Ingresarpregunta.php" style="color: #FAFAFA"><button style="color: #FAFAFA">Pregunta</button></a>
       </div>
 		</div>
 	</div>
