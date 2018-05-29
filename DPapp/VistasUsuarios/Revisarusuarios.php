@@ -15,7 +15,7 @@
   <script type="text/javascript" src="../js/bootstrap.min.js"></script>
   <style>
  table {
-  width: 100%;
+  width: 80%;
   color: #588c7e;
   font-family: monospace;
   font-size: 12px;
@@ -40,6 +40,7 @@
       <th>Nombre</th>
       <th>Apellido</th>
       <th>Email</th>
+      <th></th>
     </tr>
 <?php
 
@@ -51,17 +52,21 @@ if(!($_SESSION['login'])){
 require_once 'barramenuadmin.php';
 require_once '../classes/connection.php';
 $connection = new Connection();
-$query = $connection->getConnection()->prepare("SELECT * FROM \"Usuario\" GROUP BY \"Cedula\"");
+$query = $connection->getConnection()->prepare("SELECT * FROM \"Usuario\" GROUP BY \"Cedula\" ORDER BY \"TipoUsuario\" ASC ");
 $query->execute();
 $users = $query->fetchAll();
 foreach($users as $user) {
+  if($_SESSION['username'] != $user['Cedula']){
     $string = '';
     $string .= "<tr><td>".$user['Cedula'];
     $string .= "</td><td>".$user['TipoUsuario'];
     $string .= "</td><td>".$user['Nombre'];
     $string .= "</td><td>".$user['Apellido'];
-    $string .= "</td><td>".$user['Email']."</td></tr>";
+    $string .= "</td><td>".$user['Email']."</td>";
     echo $string;
+    echo "<td><a href='delete.php?id=".$user['Cedula']."'onclick=\"return confirm('¿Está seguro de quere borrar a este Usuario?')\">Borrar</a></td></tr>";
+  }
+
 }
 echo "</table>";
 ?>
