@@ -13,6 +13,7 @@
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  	<script type="text/javascript" src="js/PopulateTema.js"></script>
   <style type="text/css">
 	fieldset{
 		width: 30%;
@@ -66,18 +67,7 @@ if(!($_SESSION['login'])){
             <label for="tema">Tema: </label>
             <select id="tema" name="tema" class="form-control" required="true">
               <option value="">Seleccione un tema...</option>
-              <?php
-              require_once '/classes/connection.php';
-              $connection = new Connection();
-              $query = $connection->getConnection()->prepare("SELECT * FROM \"Tema\"");
-              $query->execute();
 
-              $results = $query->fetchAll(PDO::FETCH_ASSOC);
-              echo($results);
-              foreach($results as $row) {
-                  echo "<option value= '" . $row['IdTema'] . " ' >" . $row['NombreTema'] . "</option>";
-              }
-              ?>
             </select>
           </p>
           <p>
@@ -86,7 +76,11 @@ if(!($_SESSION['login'])){
           </p>
           <p>
             <label for = "tipopregunta">Tipo de Pregunta: </label>
-            <input type="number" class = "form-control" placeholder="50-150" id = "dificultad" name="dificultad" pattern= "[0-9]{2,3}" required = "true"/>
+            <input type="text" class = "form-control" placeholder="50-150" id = "tipopregunta" name="tipopregunta" pattern= "[0-9]{2,3}" required = "true"/>
+          </p>
+          <p>
+            <label for = "textopreunta">Texto de la Pregunta: </label>
+            <textarea name="message" rows="10" cols="70" placeholder="Descripcion de la pregunta"></textarea>
           </p>
         	<button type="submit" class="btn btn-primary">Ingresar</button>
         </fieldset>
@@ -94,5 +88,8 @@ if(!($_SESSION['login'])){
     </div>
   </div>
 </div>
+<script type="text/javascript">
+
+</script>
 </body>
 </html>
