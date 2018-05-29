@@ -33,6 +33,7 @@ if(!($_SESSION['login'])){
  } else if($_SESSION['tipo_usuario']=="Profesor"){
    require_once 'VistasUsuarios/barramenuprof.php';
  } else if ($_SESSION['tipo_usuario']=="Estudiante"){
+   header('location: http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Vistaestudiante');
    require_once 'VistasUsuarios/barramenuprof.php';
  }
 ?>
@@ -40,10 +41,10 @@ if(!($_SESSION['login'])){
 <div class="container">
   <div class="row">
     <div class="jumbotron">
-      <h1>Ingresar Materia</h1>
+      <h1>Ingresar Pregunta</h1>
     </div>
     <div class="col-lg-12 well">
-      <form method="POST" action="../instancias/savePregunta.php">
+      <form method="POST" action="../DPapp/instancias/savePregunta.php">
         <fieldset>
           <p>
             <label for="materia">Materia: </label>
@@ -56,7 +57,7 @@ if(!($_SESSION['login'])){
               $query->execute();
 
               $results = $query->fetchAll(PDO::FETCH_ASSOC);
-              echo($results);
+                echo($results);
               foreach($results as $row) {
                   echo "<option value= '" . $row['IdMateria'] . " ' >" . $row['Nombre'] . "</option>";
               }
@@ -79,13 +80,13 @@ if(!($_SESSION['login'])){
             <select id="tipopregunta" name="tipopregunta" class="form-control" required="true">
                 <option value="">Seleccione un tipo...</option>
                 <option value="Seleccion Multiple">Selección Múltiple</option>
-                <option value="Respuesta Abierta">Respuesta Abierto</option>
+                <option value="Respuesta Abierta">Respuesta Abierta</option>
                 <option value="Relaciones">Relaciones</option>
             </select>
           </p>
           <p>
-            <label for = "textopreunta">Texto de la Pregunta: </label>
-            <textarea name="message" rows="10" cols="70" placeholder="Descripcion de la pregunta"></textarea>
+            <label for = "textopregunta">Texto de la Pregunta: </label>
+            <textarea name="textopregunta" rows="10" cols="70" placeholder="Descripcion de la pregunta"></textarea>
           </p>
         	<button type="submit" class="btn btn-primary">Ingresar</button>
         </fieldset>

@@ -15,7 +15,8 @@ margin-top:10px;
 				<li><a href="/deceptive-polymath/DPapp/Generarexamen.php">Generar Examen</a></li>
 			</ul>
 			<ul class = "nav navbar-nav navbar-right">
-				<button type="button" style = "background-color:#FAFAFA" class="btn btn-primary" id ="login"><a href = "/deceptive-polymath/DPapp/logout.php"> Log Out</a></button>
+				<a href = "/deceptive-polymath/DPapp/logout.php" style="color: #FAFAFA">
+				<button type="button" style = "background-color:#FF0000" class="btn btn-primary" id ="login" style ="margin-bottom: 5"> Log Out</button></a>
 				</ul>
 		</div>
 	</div>

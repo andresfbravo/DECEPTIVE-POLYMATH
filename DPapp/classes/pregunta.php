@@ -21,7 +21,7 @@ class Pregunta
 	}
 
 	function getIdMateria(){
-		return $this->IdMatera;
+		return $this->IdMateria;
 	}
 
 	function getDificultad(){
@@ -73,12 +73,12 @@ class Pregunta
 	}
 
 
-	public function saveUser()
+	public function savePregunta()
 	{
 		try{
 			$connection = new Connection();
 			$connection->getConnection()->beginTransaction();
-			$query = $connection->getConnection()->prepare("INSERT INTO \"Usuario\" VALUES (:IdTema, :IdMateria, :Dificultad, :IdProfesor, :TipoPregunta, :Textopregunta)");
+			$query = $connection->getConnection()->prepare("INSERT INTO \"Preguntas\"(\"IdTema\",\"IdMateria\",\"Dificultad\", \"IdProfesor\", \"Tipo_Pregunta\", \"Textopregunta\") VALUES (:IdTema, :IdMateria, :Dificultad, :IdProfesor, :TipoPregunta, :Textopregunta)");
 
 			$IdTema = $this->getIdTema();
 			$IdMateria = $this->getIdMateria();
@@ -95,7 +95,7 @@ class Pregunta
 			$query->execute();
 			$connection->getConnection()->commit();
 			echo "<script>
-			alert('Registro Exitoso.');
+			alert('Pregunta registrada exitosamente.');
 			window.location.href = 'http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Vistaadministrador.php';
 			</script>";
 
@@ -106,6 +106,7 @@ class Pregunta
 			alert('Error al registrar, intente de nuevo.');
 			window.location.href = 'http://localhost/deceptive-polymath/DPapp/Ingresarpregunta.php';
 			</script>";
+
 
 		}
 
