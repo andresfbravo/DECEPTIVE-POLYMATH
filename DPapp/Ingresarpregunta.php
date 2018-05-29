@@ -43,7 +43,7 @@ if(!($_SESSION['login'])){
       <h1>Ingresar Materia</h1>
     </div>
     <div class="col-lg-12 well">
-      <form method="POST" action="../instancias/saveTema.php">
+      <form method="POST" action="../instancias/savePregunta.php">
         <fieldset>
           <p>
             <label for="materia">Materia: </label>
