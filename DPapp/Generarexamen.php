@@ -20,7 +20,16 @@ session_start();
 if(!($_SESSION['login'])){
   header('location: http://localhost/deceptive-polymath/DPapp/');
  }
- require_once 'VistasUsuarios/barramenuadmin.php';
+ if($_SESSION['tipo_usuario'] == 'Administrador'):
+  require_once 'VistasUsuarios/barramenuadmin.php';
+
+elseif($_SESSION['tipo_usuario'] == 'Estudiante'):
+ require_once 'VistasUsuarios/barramenuestudiante.php'; 
+
+elseif($_SESSION['tipo_usuario'] == 'Profesor'):
+ require_once 'VistasUsuarios/barramenuprof.php'; 
+
+endif;
 ?>
 
 </body>
