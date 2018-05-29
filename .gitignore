@@ -1,7 +1,5 @@
 
 *.svg
-DPapp/js/jquery.js
-DPapp/js/jquery.min.js
 DPapp/js/npm.js
 DPapp/js/bootstrap.js
 DPapp/js/bootstrap.min.js
