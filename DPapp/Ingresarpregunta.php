@@ -76,7 +76,12 @@ if(!($_SESSION['login'])){
           </p>
           <p>
             <label for = "tipopregunta">Tipo de Pregunta: </label>
-            <input type="text" class = "form-control" placeholder="50-150" id = "tipopregunta" name="tipopregunta" pattern= "[0-9]{2,3}" required = "true"/>
+            <select id="tipopregunta" name="tipopregunta" class="form-control" required="true">
+                <option value="">Seleccione un tipo...</option>
+                <option value="Seleccion Multiple">Selección Múltiple</option>
+                <option value="Respuesta Abierta">Respuesta Abierto</option>
+                <option value="Relaciones">Relaciones</option>
+            </select>
           </p>
           <p>
             <label for = "textopreunta">Texto de la Pregunta: </label>

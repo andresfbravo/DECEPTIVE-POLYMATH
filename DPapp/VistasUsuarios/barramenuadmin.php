@@ -1,5 +1,3 @@
-
-
 <style>
 body {
 	padding-top: 65px;

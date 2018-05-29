@@ -1,4 +1,11 @@
-
+<style>
+body {
+	padding-top: 65px;
+}
+.btn{
+margin-top:10px;
+}
+</style>
 <div class="navbar navbar-inverse navbar-fixed-top" rol="navigation">
 	<div class="navbar-collapse collapse">
 		<div class="container">
