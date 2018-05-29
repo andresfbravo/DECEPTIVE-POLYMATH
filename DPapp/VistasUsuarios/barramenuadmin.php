@@ -1,3 +1,5 @@
+
+
 <style>
 body {
 	padding-top: 65px;
@@ -11,7 +13,7 @@ body {
 				<li><a href="/deceptive-polymath/DPapp/VistasUsuarios/Vistaadministrador.php">Inicio</a></li>
 				<li><a href="/deceptive-polymath/DPapp/VistasUsuarios/Revisarusuarios.php">Revisar Usuarios</a></li>
 				<li><a href="/deceptive-polymath/DPapp/VistasUsuarios/Generarestadisticas.php">Generar Estadísticas</a></li>
-				<li><a href="/deceptive-polymath/DPapp/Sugerirpregunta.php">Sugerir Pregunta</a></li>
+				<li><a href="/deceptive-polymath/DPapp/VistasUsuarios/Ingresarmateria.php">Ingresar Materia</a></li>
 				<li><a href="/deceptive-polymath/DPapp/Generarexamen.php">Generar Examen</a></li>
 			</ul>
 			<ul class = "nav navbar-nav navbar-right">
