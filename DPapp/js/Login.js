@@ -17,7 +17,7 @@ $(document).ready(function(){
             window.location.href = 'http://localhost/deceptive-polymath/DPapp/vistasUsuarios/Vistaprofesor.php';
           }
           else if(response.tipo_usuario == "Estudiante"){
-            window.alert(response.mensaje);
+            window.location.href = 'http://localhost/deceptive-polymath/DPapp/vistasUsuarios/Vistaestudiante.php';
           }
         }
       },
