@@ -15,10 +15,12 @@
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/PopulateTema.js"></script>
   <script type="text/javascript" src="js/PopulatePregunta.js"></script>
+    <script type="text/javascript" src="js/agregarpreguntas.js"></script>
 </head>
 <body>
 <?php
 session_start();
+$_SESSION['numeracion'] = 1;
 if(!($_SESSION['login'])){
   header('location: http://localhost/deceptive-polymath/DPapp/');
  }
@@ -73,10 +75,10 @@ endif;
 
             </select>
           </p>
-          <button type="button" id = "agregar" class="logout btn-primary">Agregar pregunta</button>
+          <button type="button" id="agregar" class="logout btn-primary">Agregar pregunta</button>
           <p>
             <label for = "textopregunta">Texto de la Pregunta: </label>
-            <textarea name="textopregunta" rows="10" cols="70" placeholder="Descripcion de la pregunta"></textarea>
+            <textarea id ="textopregunta" name="textopregunta" rows="10" cols="70" placeholder="Descripcion de la pregunta"></textarea>
           </p>
         </fieldset>
       </form>

@@ -58,19 +58,25 @@ require_once '../classes/connection.php';
 $connection = new Connection();
 $query = $connection->getConnection()->prepare("SELECT * FROM \"Sugerencia\" ");
 $query->execute();
-$users = $query->fetchAll();
-foreach($users as $user) {
-  if($_SESSION['username'] != $user['Cedula']){
+$sugerencias = $query->fetchAll();
+foreach($sugerencias as $sugerencia){
     $string = '';
-    $string .= "<tr><td>".$user['Cedula'];
-    $string .= "</td><td>".$user['TipoUsuario'];
-    $string .= "</td><td>".$user['Nombre'];
-    $string .= "</td><td>".$user['Apellido'];
-    $string .= "</td><td>".$user['Email']."</td>";
-    echo $string;
-    echo "<td><a href='delete.php?id=".$user['Cedula']."'onclick=\"return confirm('¿Está seguro de quere borrar a este Usuario?')\">Borrar</a></td></tr>";
-  }
+    $string .= "<tr><td>".$sugerencia['Nombre'];
+    $string .= "</td><td>".$sugerencia['NombreTema'];
+    $string .= "</td><td>".$sugerencia['Dificultad'];
+    $string .= "</td><td>".$sugerencia['Corte'];
+    $string .= "</td><td>".$sugerencia['IdUsuario'];
+    $string .= "</td><td>".$sugerencia['Fecha'];
+    $string .= "</td><td>".$sugerencia['Tipo_pregunta'];
+    $string .= "</td><td>".$sugerencia['Textopregunta'];
+    if($sugerencia['Aceptacion']){
+      $string .= "</td><td>"."Aceptada"."</td>";
+    }else{
+        $string .= "</td><td>"."No Aceptada"."</td>";
+    }
 
+    echo $string;
+    echo "<td><a href='aceptar.php?id=".$sugerencia['IdSugerencia']."'>Aceptar</a></td></tr>";
 }
 echo "</table>";
 ?>

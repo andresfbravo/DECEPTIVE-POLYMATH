@@ -8,10 +8,11 @@ $(document).ready(function () {
           data:{pregunta:pregunta},
           success: function(response){
             var options = "";
-            options = options + response;
-            $("#textorespuesta").append(options);
+            options = options + response+"\r\n\r\n";
+            $("#textopregunta").append(options);
           },
           error: function(response){
+            window.alert("ERROR");
             var options = "";
             $("#textorespuesta").append(options);
           }
