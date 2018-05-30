@@ -79,19 +79,19 @@ class Examen
 			$connection = new Connection();
 			$connection->getConnection()->beginTransaction();
 			$query = $connection->getConnection()->prepare("INSERT INTO \"Preguntas\"(\"IdTema\",\"IdMateria\",\"Dificultad\", \"IdProfesor\", \"Tipo_Pregunta\", \"Textopregunta\") VALUES (:IdTema, :IdMateria, :Dificultad, :IdProfesor, :TipoPregunta, :Textopregunta)");
-
+####
 			$IdTema = $this->getIdTema();
 			$IdMateria = $this->getIdMateria();
 			$Dificultad = $this->getDificultad();
 			$IdProfesor = $this->getIdProfesor();
 			$Tipo_pregunta = $this->getTipoPregunta();
-			$Textopregunta = $this->getTextoPregunta();
+			#$Textopregunta = $this->getTextoPregunta();
 			$query->bindValue(':IdTema', $IdTema);
 			$query->bindValue(':IdMateria', $IdMateria);
 			$query->bindValue(':Dificultad', $Dificultad);
 			$query->bindValue(':IdProfesor', $IdProfesor);
 			$query->bindValue(':TipoPregunta', $Tipo_pregunta);
-			$query->bindValue(':Textopregunta', $Textopregunta);
+			#$query->bindValue(':Textopregunta', $Textopregunta);
 			$query->execute();
 			$materiaquery = $connection->getConnection()->prepare("SELECT \"CantidadPreguntas\", \"Dificultad\" FROM \"Materia\" WHERE \"IdMateria\" = :IdMateria");
 			$materiaquery->bindValue(':IdMateria', $IdMateria);

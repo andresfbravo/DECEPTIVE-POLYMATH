@@ -13,6 +13,7 @@
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/PopulateTema.js"></script>
 </head>
 <body>
 <?php
@@ -32,13 +33,53 @@ endif;
 ?>
 
   <div class="container">
-    <div class="row">
-      <div class="jumbotron">
-        <h1>Generador de examenes</h1>
-      </div>
-      <!--<div class="col-lg-12 well">
-    </div><-->
-  </div>
+  <div class="row">
+    <div class="jumbotron">
+      <h1>Generador de Examenes</h1>
+    </div>
+    <div class="col-lg-12 well">
+      <form method="POST" action="../DPapp/instancias/saveExamen.php">
+        <fieldset>
+          <p>
+            <label for="materia">Materia: </label>
+            <select id="materia" name="materia" class="form-control" required="true">
+              <option value="">Seleccione una materia...</option>
+              <?php
+              require_once '/classes/connection.php';
+              $connection = new Connection();
+              $query = $connection->getConnection()->prepare("SELECT * FROM \"Materia\"");
+              $query->execute();
 
+              $results = $query->fetchAll(PDO::FETCH_ASSOC);
+                echo($results);
+              foreach($results as $row) {
+                  echo "<option value= '" . $row['IdMateria'] . " ' >" . $row['Nombre'] . "</option>";
+              }
+              ?>
+            </select>
+          </p>
+          <p>
+            <label for="tema">Tema: </label>
+            <select id="tema" name="tema" class="form-control" required="true">
+              <option value="">Seleccione un tema...</option>
+
+            </select>
+          </p>
+          <p>
+            <label for="pregunta">Pregunta: </label>
+            <select id="pregunta" name="pregunta" class="form-control" required="true">
+              <option value="">Seleccione una pregunta...</option>
+
+            </select>
+          </p>
+          <button type="submit" class="logout btn-primary">Ingresar</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+
+</script>
 </body>
 </html>
