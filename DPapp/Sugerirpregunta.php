@@ -13,6 +13,7 @@
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  	<script type="text/javascript" src="js/PopulateTema.js"></script>
   <style type="text/css">
 	fieldset{
 		width: 30%;
@@ -27,25 +28,74 @@ session_start();
 if(!($_SESSION['login'])){
   header('location: http://localhost/deceptive-polymath/DPapp/');
  }
- require_once 'VistasUsuarios/barramenuadmin.php';
+ if ($_SESSION['tipo_usuario']=="Administrador"){
+   require_once 'VistasUsuarios/barramenuadmin.php';
+ } else if($_SESSION['tipo_usuario']=="Profesor"){
+   require_once 'VistasUsuarios/barramenuprof.php';
+ } else if ($_SESSION['tipo_usuario']=="Estudiante"){
+   header('location: http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Vistaestudiante');
+   require_once 'VistasUsuarios/barramenuprof.php';
+ }
 ?>
+
 <div class="container">
   <div class="row">
     <div class="jumbotron">
-      <h1>Ingresar Pregunta</h1>
+      <h1>Sugerir Pregunta</h1>
     </div>
     <div class="col-lg-12 well">
-      <form method="POST" action="instancias/saveUser.php">
+      <form method="POST" action="../DPapp/instancias/saveSugerencia.php">
         <fieldset>
           <p>
-            <label for = "userid">Documento de Identificación: </label>
-            <input type="number" min="999999" maxlength="10" class = "form-control" placeholder="Cedula de Ciudadania" id = "userid" name="userid" pattern="[0-9]*" required = "true"/>
-          </p>
+            <label for="materia">Materia: </label>
+            <select id="materia" name="materia" class="form-control" required="true">
+              <option value="">Seleccione una materia...</option>
+              <?php
+              require_once '/classes/connection.php';
+              $connection = new Connection();
+              $query = $connection->getConnection()->prepare("SELECT * FROM \"Materia\"");
+              $query->execute();
 
+              $results = $query->fetchAll(PDO::FETCH_ASSOC);
+                echo($results);
+              foreach($results as $row) {
+                  echo "<option value= '" . $row['IdMateria'] . " ' >" . $row['Nombre'] . "</option>";
+              }
+              ?>
+            </select>
+          </p>
+          <p>
+            <label for="tema">Tema: </label>
+            <select id="tema" name="tema" class="form-control" required="true">
+              <option value="">Seleccione un tema...</option>
+
+            </select>
+          </p>
+          <p>
+            <label for = "dificultad">Dificultad: </label>
+            <input type="number" class = "form-control" placeholder="50-150" id = "dificultad" name="dificultad" pattern= "[0-9]{2,3}" required = "true"/>
+          </p>
+          <p>
+            <label for = "tipopregunta">Tipo de Pregunta: </label>
+            <select id="tipopregunta" name="tipopregunta" class="form-control" required="true">
+                <option value="">Seleccione un tipo...</option>
+                <option value="Seleccion Multiple">Selección Múltiple</option>
+                <option value="Respuesta Abierta">Respuesta Abierta</option>
+                <option value="Relaciones">Relaciones</option>
+            </select>
+          </p>
+          <p>
+            <label for = "textopregunta">Texto de la Pregunta: </label>
+            <textarea name="textopregunta" rows="10" cols="70" placeholder="Descripcion de la pregunta"></textarea>
+          </p>
+        	<button type="submit" class="logout btn-primary">Sugerir</button>
         </fieldset>
       </form>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+
+</script>
 </body>
 </html>
