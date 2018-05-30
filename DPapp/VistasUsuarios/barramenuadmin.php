@@ -15,6 +15,7 @@ margin-top:10px;
 				<li><a href="/deceptive-polymath/DPapp/VistasUsuarios/Revisarusuarios.php">Revisar Usuarios</a></li>
 				<li><a href="/deceptive-polymath/DPapp/VistasUsuarios/Generarestadisticas.php">Generar Estadísticas</a></li>
 				<li><a href="/deceptive-polymath/DPapp/VistasUsuarios/Ingresar.php">Ingresar</a></li>
+				<li><a href="/deceptive-polymath/DPapp/VistasUsuarios/Revisarpreguntas.php">Revisar Preguntas</a></li>
 				<li><a href="/deceptive-polymath/DPapp/Generarexamen.php">Generar Examen</a></li>
 			</ul>
 			<ul class = "nav navbar-nav navbar-right">
