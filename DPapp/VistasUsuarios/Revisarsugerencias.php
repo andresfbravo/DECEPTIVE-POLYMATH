@@ -84,7 +84,7 @@ foreach($sugerencias as $sugerencia){
     }
 
     echo $string;
-    echo "<td><a href='aceptar.php?id=".$sugerencia['IdSugerencia']."'>Aceptar</a></td></tr>";
+    echo "<td><a href='aceptar.php?idsugerencia=".$sugerencia['IdSugerencia']."'>Aceptar</a></td></tr>";
 }
 echo "</table>";
 ?>
