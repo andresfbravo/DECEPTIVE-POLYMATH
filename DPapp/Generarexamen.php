@@ -28,9 +28,17 @@ elseif($_SESSION['tipo_usuario'] == 'Estudiante'):
 
 elseif($_SESSION['tipo_usuario'] == 'Profesor'):
  require_once 'VistasUsuarios/barramenuprof.php'; 
-
 endif;
 ?>
+
+  <div class="container">
+    <div class="row">
+      <div class="jumbotron">
+        <h1>Generador de examenes</h1>
+      </div>
+      <!--<div class="col-lg-12 well">
+    </div><-->
+  </div>
 
 </body>
 </html>
