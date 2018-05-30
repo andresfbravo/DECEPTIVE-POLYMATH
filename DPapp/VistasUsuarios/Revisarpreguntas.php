@@ -58,11 +58,11 @@ elseif($_SESSION['tipo_usuario'] == 'Estudiante'):
  require_once '../VistasUsuarios/barramenuestudiante.php';
 
 elseif($_SESSION['tipo_usuario'] == 'Profesor'):
-<<<<<<< HEAD
+
  require_once '../VistasUsuarios/barramenuprof.php';
 endif;
 =======
- require_once '../VistasUsuarios/barramenuprof.php'; 
+ require_once '../VistasUsuarios/barramenuprof.php';
 endif;
 require_once '../classes/connection.php';
 $connection = new Connection();
@@ -82,19 +82,18 @@ foreach($preguntas as $pregunta) {
     $string .= "</td><td>".$pregunta['Tipo_Pregunta'];
     $string .= "</td><td>".$pregunta['Textopregunta']."</td>";
     echo $string;
-   #} 
+   #}
 if($_SESSION['tipo_usuario'] == 'Administrador'):
     echo "<td><a href='deletepregunta.php?idPregunta=".$pregunta['IdPregunta']."'onclick=\"return confirm('¿Está seguro de quere borrar esta pregunta?')\">Borrar</a></td></tr>";
 
 elseif($_SESSION['tipo_usuario'] == 'Profesor'):
     echo "<td><a href='deletepregunta.php?idPregunta=".$pregunta['IdPregunta']."'onclick=\"return confirm('¿Está seguro de quere borrar esta pregunta?')\">Borrar</a></td></tr>";
 endif;
-  
+
 
 }
 echo "</table>";
 
->>>>>>> 06456d10b604c09fba76423c2f1458275917e6ff
 
 ?>
 </table>
