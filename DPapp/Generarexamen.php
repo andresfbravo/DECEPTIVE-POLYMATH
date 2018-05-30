@@ -16,6 +16,10 @@
   <script type="text/javascript" src="js/PopulateTema.js"></script>
   <script type="text/javascript" src="js/PopulatePregunta.js"></script>
     <script type="text/javascript" src="js/agregarpreguntas.js"></script>
+
+  <style type="text/css">
+    white-space:pre-wrap;
+  </style>
 </head>
 <body>
 <?php
@@ -75,11 +79,13 @@ endif;
 
             </select>
           </p>
-          <button type="button" id="agregar" class="logout btn-primary">Agregar pregunta</button>
+          
           <p>
             <label for = "textopregunta">Texto de la Pregunta: </label>
             <textarea id ="textopregunta" name="textopregunta" rows="10" cols="70" placeholder="Descripcion de la pregunta"></textarea>
           </p>
+          <button type="button" id="agregar" class="logout btn-primary">Agregar pregunta</button>
+          <button type="sumit" id="imprimir" class="logout btn-primary">Imprimir</button>
         </fieldset>
       </form>
     </div>

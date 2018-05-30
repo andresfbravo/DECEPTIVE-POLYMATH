@@ -53,7 +53,15 @@ session_start();
 if(!($_SESSION['login'])){
   header('location: http://localhost/deceptive-polymath/DPapp/');
  }
-require_once 'barramenuadmin.php';
+  if($_SESSION['tipo_usuario'] == 'Administrador'):
+  require_once '../VistasUsuarios/barramenuadmin.php';
+
+elseif($_SESSION['tipo_usuario'] == 'Estudiante'):
+ require_once '../VistasUsuarios/barramenuestudiante.php';
+elseif($_SESSION['tipo_usuario'] == 'Profesor'):
+ require_once '../VistasUsuarios/barramenuprof.php';
+endif;
+#require_once 'barramenuadmin.php';
 require_once '../classes/connection.php';
 $connection = new Connection();
 $query = $connection->getConnection()->prepare("SELECT * FROM \"Sugerencia\" ");

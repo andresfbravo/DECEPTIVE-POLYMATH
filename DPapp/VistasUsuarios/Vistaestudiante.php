@@ -31,7 +31,7 @@ if(!($_SESSION['login'])){
     </div>
     <div class="col-lg-12 well">
       <p class = "lead">
-        texto de bienvenida
+        Bienvenido estudiante usted tiene permisos de revisar pregunas de nuestra base de datos, realizar sugerencias de preguntas que considere deben estar en nuestra base de datos y generar examenes con las preguntas teniendo en cuenta la materia y el tema.
       </p>
     </div>
 
