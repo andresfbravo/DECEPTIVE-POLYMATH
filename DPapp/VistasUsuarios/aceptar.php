@@ -34,7 +34,7 @@ try {
     alert('Error al aceptar sugerencia');
       window.location.href = 'location: http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Revisarusuarios.php';
     </script>";
-    
+      
 }
 
 

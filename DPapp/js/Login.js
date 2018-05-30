@@ -13,16 +13,17 @@ $(document).ready(function(){
         if(response.respuesta == true){
           if(response.tipo_usuario=="Administrador"){
             window.location.href = 'http://localhost/deceptive-polymath/DPapp/vistasUsuarios/Vistaadministrador.php';
-          }else if(response.tipo_usuario == "Profesor"){  
+          }else if(response.tipo_usuario == "Profesor"){
             window.location.href = 'http://localhost/deceptive-polymath/DPapp/vistasUsuarios/Vistaprofesor.php';
           }
           else if(response.tipo_usuario == "Estudiante"){
             window.location.href = 'http://localhost/deceptive-polymath/DPapp/vistasUsuarios/Vistaestudiante.php';
           }
+        }else{
+          window.alert(response.mensaje);
         }
       },
       error: function(response){
-        console.log("Error");
         window.alert(response.mensaje);
       }
     });

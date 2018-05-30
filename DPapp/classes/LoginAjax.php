@@ -35,23 +35,23 @@
             */
            $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => $_SESSION['tipo_usuario']);
           else:
-             $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => null);
             $errormessage = 'Usuario o Contraseña incorrecta.';
+             $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => null);
           endif;
         else:
-           $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => null);
           $errormessage = 'Contraseña incorrecta.';
+           $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => null);
         endif;
       else:
+        $errormessage = 'Todos los datos son requeridos.';
          $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => null);
-          $errormessage = 'Todos los datos son requeridos.';
       endif;
-  
+
     else:
        $Jsonout = array('respuesta'=> $okmessage, 'mensaje'=> $errormessage, 'tipo_usuario' => null);
     endif;
 
-   
+
     echo json_encode($Jsonout);
 
 ?>
