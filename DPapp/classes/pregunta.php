@@ -93,6 +93,28 @@ class Pregunta
 			$query->bindValue(':TipoPregunta', $Tipo_pregunta);
 			$query->bindValue(':Textopregunta', $Textopregunta);
 			$query->execute();
+			$materiaquery = $connection->getConnection()->prepare("SELECT \"CantidadPreguntas\", \"Dificultad\" FROM \"Materia\" WHERE \"IdMateria\" = :IdMateria");
+			$materiaquery->bindValue(':IdMateria', $IdMateria);
+		 	$materiaquery->execute();
+			$materiaresult = $materiaquery->fetchAll();
+			$cantpreguntasmat = $materiaresult[0]['CantidadPreguntas'];
+			$dificultadmat = $materiaresult[0]['Dificultad'];
+			$dificultadmat = $dificultadmat * $cantpreguntasmat;
+			$cantpreguntasmat = $cantpreguntasmat + 1;
+			$dificultadmat = ($dificultadmat + $Dificultad) / $cantpreguntasmat;
+			$updatemat = $connection->getConnection()->prepare("UPDATE \"Materia\" SET \"CantidadPreguntas\" = $cantpreguntasmat, \"Dificultad\" = $dificultadmat WHERE \"IdMateria\" = $IdMateria" );
+			$updatemat->execute();
+			$temaquery = $connection->getConnection()->prepare("SELECT \"CantidadPreguntas\", \"Dificultad\" FROM \"Tema\" WHERE \"IdMateria\" = :IdMateria");
+			$temaquery->bindValue(':IdMateria', $IdMateria);
+			$temaquery->execute();
+			$temaresult = $temaquery->fetchAll();
+			$cantpreguntastema = $temaresult[0]['CantidadPreguntas'];
+			$dificultadtema = $temaresult[0]['Dificultad'];
+			$dificultadtema = $dificultadtema * $cantpreguntastema;
+			$cantpreguntastema = $cantpreguntastema + 1;
+			$dificultadtema = ($dificultadtema + $Dificultad) / $cantpreguntastema;
+			$updatetema = $connection->getConnection()->prepare("UPDATE \"Tema\" SET \"CantidadPreguntas\" = $cantpreguntastema, \"Dificultad\" = $dificultadtema WHERE \"IdTema\" = $IdTema" );
+			$updatetema->execute();
 			$connection->getConnection()->commit();
 			echo "<script>
 			alert('Pregunta registrada exitosamente.');
@@ -101,12 +123,12 @@ class Pregunta
 
 		} catch (PDOException $e){
 			$connection->getConnection()-> rollback();
-			#echo "Error en la inserccion ...".$e->getMessage();
-			echo "<script>
+			echo "Error en la inserccion ...".$e->getMessage();
+			/*echo "<script>
 			alert('Error al registrar, intente de nuevo.');
 			window.location.href = 'http://localhost/deceptive-polymath/DPapp/Ingresarpregunta.php';
 			</script>";
-
+			*/
 
 		}
 
