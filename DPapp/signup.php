@@ -51,29 +51,29 @@
 						</div>
 						<div class="estudinfo" style= "display:none">
 							<label> Introduzca su programa académico:
-								<input type="text" class="form-control" id="progacadem" name="progacadem" required = "false" pattern= "\w+( |\w+)*"/></input>
+								<input type="text" oninvalid="this.setCustomValidity('solo se permiten caracteres alfabeticos') " class="form-control" id="progacadem" name="progacadem" required = "false" pattern= "[a-zA-Z]( |[a-zA-Z])*"/></input>
 							 </label>
 						</div>
 						<div class="profinfo" style= "display:none">
 							<label> Introduzca la asignatura que imparte:
-								<input type="text" class="form-control" id="asignatura" name="asignatura" required = "false" pattern= "\w+( |\w+)*"/></input>
+								<input type="text" class="form-control" id="asignatura" name="asignatura" required = "false" pattern= "[a-zA-Z]( |[a-zA-Z])*"/></input>
 							 </label>
 						</div>
 						<p>
 							<label for = "nombre">Primer Nombre: </label>
-							<input type = "text" class="form-control" id="nombre" placeholder="Primer Nombre" name="nombre" pattern= "\w+" required = "true"/>
+							<input type = "text" class="form-control" id="nombre" placeholder="Primer Nombre" name="nombre" pattern= "[a-zA-Z]*" required = "true"/>
 						</p>
 						<p>
 							<label for = "nombre1">Segundo Nombre: </label>
-							<input type = "text" class="form-control" id="nombre1" placeholder="Segundo Nombre" pattern= "\w+" name="nombre1"/>
+							<input type = "text" class="form-control" id="nombre1" placeholder="Segundo Nombre" pattern= "[a-zA-Z]*" name="nombre1"/>
 						</p>
 						<p>
 							<label for = "apellido">Primer Apellido: </label>
-							<input type = "text" class="form-control" id="apellido" name="apellido" placeholder="Primer Apellido" pattern= "\w+" required = "true"/>
+							<input type = "text" class="form-control" id="apellido" name="apellido" placeholder="Primer Apellido" pattern= "[a-zA-Z]*" required = "true"/>
 						</p>
 						<p>
 							<label for = "apellido1">Segundo Apellido: </label>
-							<input type = "text" class="form-control" id="apellido1" placeholder="Segundo Apellido" pattern= "\w+" name="apellido1"/>
+							<input type = "text" class="form-control" id="apellido1" placeholder="Segundo Apellido" pattern= "[a-zA-Z]*" name="apellido1"/>
 						</p>
 						<p>
 							<label for="email">E-mail:</label>
@@ -84,6 +84,7 @@
 							<input type="password" minlength="8" maxlength="16"class="form-control" id="password" name="password" placeholder="Contraseña" required="true"/>
 						</p>
 						<button type="submit" class="btn btn-primary">Registrar</button>
+						<a href="http://localhost/deceptive-polymath/DPapp/"><button type="button" class="btn btn-primary">Ir a inicio</button></a>
 					</fieldset>
 				</form>
 			</div>
