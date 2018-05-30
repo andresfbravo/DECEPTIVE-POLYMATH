@@ -56,12 +56,7 @@ if(!($_SESSION['login'])){
 
 elseif($_SESSION['tipo_usuario'] == 'Estudiante'):
  require_once '../VistasUsuarios/barramenuestudiante.php';
-
 elseif($_SESSION['tipo_usuario'] == 'Profesor'):
-
- require_once '../VistasUsuarios/barramenuprof.php';
-endif;
-=======
  require_once '../VistasUsuarios/barramenuprof.php';
 endif;
 require_once '../classes/connection.php';
