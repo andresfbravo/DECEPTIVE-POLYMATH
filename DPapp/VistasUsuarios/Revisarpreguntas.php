@@ -24,13 +24,10 @@ if(!($_SESSION['login'])){
   require_once '../VistasUsuarios/barramenuadmin.php';
 
 elseif($_SESSION['tipo_usuario'] == 'Estudiante'):
- require_once '../VistasUsuarios/barramenuestudiante.php'; 
+ require_once '../VistasUsuarios/barramenuestudiante.php';
 
 elseif($_SESSION['tipo_usuario'] == 'Profesor'):
- require_once '../VistasUsuarios/barramenuprof.php'; 
-
-
-
+ require_once '../VistasUsuarios/barramenuprof.php';
 endif;
 
 ?>
