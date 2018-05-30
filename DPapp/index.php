@@ -33,12 +33,12 @@
 				<form>
 					<fieldset>
 						<p>
-							<label for="username">Username:</label>
+							<label for="username">Cedula:</label>
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input type="number" min="999999" maxlength="10" class="form-control" id="username" placeholder="Nombre de Usuario" name="username"  pattern="[0-9]*" required="true"/>
+							<input type="number" min="999999" maxlength="10" class="form-control" id="username" placeholder="Cedula" name="username"  pattern="[0-9]*" required="true"/>
 						</p>
 						<p>
-							<label for="password">Password: </label>
+							<label for="password">Contraseña: </label>
 								<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 							<input type="password" minlength="8" maxlength="16" class="form-control" id="password" placeholder="Contraseña" name="password" required="true"/>
 						</p>
