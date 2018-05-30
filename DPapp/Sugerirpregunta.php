@@ -75,6 +75,10 @@ if(!($_SESSION['login'])){
             <input type="number" class = "form-control" placeholder="50-150" id = "dificultad" name="dificultad" pattern= "[0-9]{2,3}" required = "true"/>
           </p>
           <p>
+            <label for = "corte">Corte: </label>
+            <input type="number" class = "form-control" placeholder="1,2,3..." id = "corte" name="corte" pattern= "[0-9]{2,3}" required = "true"/>
+          </p>
+          <p>
             <label for = "tipopregunta">Tipo de Pregunta: </label>
             <select id="tipopregunta" name="tipopregunta" class="form-control" required="true">
                 <option value="">Seleccione un tipo...</option>

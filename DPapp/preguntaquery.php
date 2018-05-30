@@ -2,7 +2,7 @@
 require_once '/classes/connection.php';
 $connection = new Connection();
 $tema = $_POST['tema'];
-print_r ($_POST);
+#print_r ($_POST);
 $query = $connection->getConnection()->prepare("SELECT * FROM \"Preguntas\" WHERE \"IdTema\" = $tema");
 $query->execute();
 
