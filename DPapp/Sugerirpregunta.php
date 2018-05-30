@@ -33,8 +33,7 @@ if(!($_SESSION['login'])){
  } else if($_SESSION['tipo_usuario']=="Profesor"){
    require_once 'VistasUsuarios/barramenuprof.php';
  } else if ($_SESSION['tipo_usuario']=="Estudiante"){
-   header('location: http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Vistaestudiante');
-   require_once 'VistasUsuarios/barramenuprof.php';
+   require_once 'VistasUsuarios/barramenuestudiante.php';
  }
 ?>
 
