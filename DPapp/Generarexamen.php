@@ -73,7 +73,11 @@ endif;
 
             </select>
           </p>
-          <button type="submit" class="logout btn-primary">Ingresar</button>
+          <button type="button" id = "agregar" class="logout btn-primary">Agregar pregunta</button>
+          <p>
+            <label for = "textopregunta">Texto de la Pregunta: </label>
+            <textarea name="textopregunta" rows="10" cols="70" placeholder="Descripcion de la pregunta"></textarea>
+          </p>
         </fieldset>
       </form>
     </div>
