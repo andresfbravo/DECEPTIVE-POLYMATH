@@ -51,7 +51,7 @@
 						</div>
 						<div class="estudinfo" style= "display:none">
 							<label> Introduzca su programa académico:
-								<input type="text" oninvalid="this.setCustomValidity('solo se permiten caracteres alfabeticos') " class="form-control" id="progacadem" name="progacadem" required = "false" pattern= "[a-zA-Z]( |[a-zA-Z])*"/></input>
+								<input type="text" oninvalid="this.setCustomValidity('solo se permiten caracteres alfabeticos') " oninput="this.setCustomValidity('')" class="form-control" id="progacadem" name="progacadem" required = "false" pattern= "[a-zA-Z]( |[a-zA-Z])*"/></input>
 							 </label>
 						</div>
 						<div class="profinfo" style= "display:none">
