@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'Revisarsugerencias.php';
 require_once '../classes/pregunta.php';
 if(!($_SESSION['login'])){
   header('location: http://localhost/deceptive-polymath/DPapp/');
@@ -11,10 +11,12 @@ $connection = new Connection();
 $connection->getConnection()->beginTransaction();
 try {
   $query = $connection->getConnection()->prepare("SELECT * FROM \"Sugerencia\"  WHERE \"IdSugerencia\" = $idsugerencia");
-  $updatesugerencia = $connection->getConnection()->prepare("UPDATE \"Sugerencia\" SET \"Aceptacion\" = 'true' WHERE \"IdSugerencia\" = $idsugerencia");
-  $updatesugerencia->execute();
   $query->execute();
   $preguntaresult = $query->fetchAll();
+  if(!$preguntaresult[0]['Aceptacion']){
+  $updatesugerencia = $connection->getConnection()->prepare("UPDATE \"Sugerencia\" SET \"Aceptacion\" = 'true' WHERE \"IdSugerencia\" = $idsugerencia");
+  $updatesugerencia->execute();
+
   #print_r($preguntaresult[0]);
   $connection->getConnection()->commit();
   $pregunta = new Pregunta();
@@ -25,7 +27,16 @@ try {
   $pregunta->setTipoPregunta($preguntaresult[0]['Tipo_pregunta']);
   $pregunta->setTextopregunta($preguntaresult[0]['Textopregunta']);
   $pregunta->savePregunta();
-  header('location: http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Revisarsugerencias.php');
+  echo "<script>
+  alert('Sugerencia aceptada correctamente.');
+  window.location.href = 'http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Revisarsugerencias.php';
+  </script>";
+}else{
+  echo "<script>
+  alert('La sugerencia ya había sido aceptada en la base de datos.');
+  window.location.href = 'http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Revisarsugerencias.php';
+  </script>";
+}
 } catch (PDOException $e) {
   	$connection->getConnection()-> rollback();
     #echo "Error en la inserccion ...".$e->getMessage();
