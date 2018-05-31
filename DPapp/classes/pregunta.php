@@ -123,12 +123,12 @@ class Pregunta
 
 		} catch (PDOException $e){
 			$connection->getConnection()-> rollback();
-			echo "Error en la inserccion ...".$e->getMessage();
-			/*echo "<script>
+			#echo "Error en la inserccion ...".$e->getMessage();
+			echo "<script>
 			alert('Error al registrar, intente de nuevo.');
 			window.location.href = 'http://localhost/deceptive-polymath/DPapp/Ingresarpregunta.php';
 			</script>";
-			*/
+			
 
 		}
 

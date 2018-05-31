@@ -85,7 +85,7 @@ class Sugerencia
 		try{
 			$connection = new Connection();
 			$connection->getConnection()->beginTransaction();
-			$query = $connection->getConnection()->prepare("INSERT INTO \"Sugerencia\"(\"Nombre\",\"IdTema\",\"Dificultad\",\"IdMateria\",\"Corte\", \"IdUsuario\",\"Fecha\", \"Tipo_pregunta\", \"Textopregunta\", \"Aceptacion\", \"NombreTema\") VALUES (:Nombre, :IdTema, :Dificultad, :IdMateria, :Corte, :IdUsuario, :Fecha, :TipoPregunta, :Textopregunta, :Aceptacion, :NombreTema)");
+			$query = $connection->getConnection()->prepare("INSERT INTO \"Sugerencia\"(\"NombreMateria\",\"IdTema\",\"Dificultad\",\"IdMateria\",\"Corte\", \"IdUsuario\",\"Fecha\", \"Tipo_pregunta\", \"Textopregunta\", \"Aceptacion\", \"NombreTema\") VALUES (:Nombre, :IdTema, :Dificultad, :IdMateria, :Corte, :IdUsuario, :Fecha, :TipoPregunta, :Textopregunta, :Aceptacion, :NombreTema)");
 
 			$IdTema = $this->getIdTema();
       $IdUsuario = $_SESSION['username'];
@@ -98,7 +98,7 @@ class Sugerencia
       $materiaresult = $querymateria->fetchAll();
       $Nombre = $materiaresult[0]['Nombre'];
       $Fecha =  $date;
-      print_r($Fecha);
+      #print_r($Fecha);
       $querycorte->execute();
       $Dificultad = $this->getDificultad();
       $Corteresult = $querycorte->fetchAll();
@@ -110,7 +110,7 @@ class Sugerencia
 			$Textopregunta = $this->getTextoPregunta();
       $query->bindValue(':Nombre', $Nombre);
       $query->bindValue(':NombreTema', $NombreTema);
-        $query->bindValue(':Dificultad', $Dificultad);
+      $query->bindValue(':Dificultad', $Dificultad);
       $query->bindValue(':Aceptacion', $Aceptacion);
 			$query->bindValue(':IdTema', $IdTema);
 			$query->bindValue(':IdMateria', $IdMateria);
@@ -129,12 +129,11 @@ class Sugerencia
 
 		} catch (PDOException $e){
 			$connection->getConnection()-> rollback();
-			#echo "Error en la inserccion ...".$e->getMessage();
-			echo "<script>
+			echo "Error en la inserccion ...".$e->getMessage();
+			/*echo "<script>
 			alert('Error al registrar, intente de nuevo.');
 			window.location.href = 'http://localhost/deceptive-polymath/DPapp/Ingresarpregunta.php';
-			</script>";
-			
+		</script>";*/
 
 		}
 

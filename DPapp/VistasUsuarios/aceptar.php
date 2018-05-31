@@ -15,7 +15,7 @@ try {
   $updatesugerencia->execute();
   $query->execute();
   $preguntaresult = $query->fetchAll();
-  print_r($preguntaresult[0]);
+  #print_r($preguntaresult[0]);
   $connection->getConnection()->commit();
   $pregunta = new Pregunta();
   $pregunta->setIdTema($preguntaresult[0]['IdTema']);
@@ -24,7 +24,6 @@ try {
   $pregunta->setIdProfesor($_SESSION['username']);
   $pregunta->setTipoPregunta($preguntaresult[0]['Tipo_pregunta']);
   $pregunta->setTextopregunta($preguntaresult[0]['Textopregunta']);
-  #print_r($usuario);
   $pregunta->savePregunta();
   header('location: http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Revisarsugerencias.php');
 } catch (PDOException $e) {
@@ -34,7 +33,7 @@ try {
     alert('Error al aceptar sugerencia');
       window.location.href = 'location: http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Revisarusuarios.php';
     </script>";
-      
+
 }
 
 

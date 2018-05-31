@@ -69,7 +69,7 @@ $query->execute();
 $sugerencias = $query->fetchAll();
 foreach($sugerencias as $sugerencia){
     $string = '';
-    $string .= "<tr><td>".$sugerencia['Nombre'];
+    $string .= "<tr><td>".$sugerencia['NombreMateria'];
     $string .= "</td><td>".$sugerencia['NombreTema'];
     $string .= "</td><td>".$sugerencia['Dificultad'];
     $string .= "</td><td>".$sugerencia['Corte'];

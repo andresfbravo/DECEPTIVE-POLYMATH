@@ -3,7 +3,7 @@ require_once '/classes/connection.php';
 $connection = new Connection();
 $tema = $_POST['tema'];
 # print_r ($_POST);
-$query = $connection->getConnection()->prepare("SELECT * FROM \"Preguntas\" WHERE \"IdTema\" = $tema");
+$query = $connection->getConnection()->prepare("SELECT * FROM \"Preguntas\" WHERE \"IdTema\" = $tema GROUP BY \"IdPregunta\"");
 $query->execute();
 
 $results = $query->fetchAll(PDO::FETCH_ASSOC);

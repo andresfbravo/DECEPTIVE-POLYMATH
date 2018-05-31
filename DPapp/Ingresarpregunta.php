@@ -53,7 +53,7 @@ if(!($_SESSION['login'])){
               <?php
               require_once '/classes/connection.php';
               $connection = new Connection();
-              $query = $connection->getConnection()->prepare("SELECT * FROM \"Materia\"");
+              $query = $connection->getConnection()->prepare("SELECT * FROM \"Materia\" GROUP BY \"IdMateria\"");
               $query->execute();
 
               $results = $query->fetchAll(PDO::FETCH_ASSOC);
