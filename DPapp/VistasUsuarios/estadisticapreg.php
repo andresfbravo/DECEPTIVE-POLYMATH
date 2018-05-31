@@ -38,13 +38,14 @@
 <table>
     <tr>
       <th>Id de Pregunta</th>
-      <th>Id de Tema</th>
-      <th>Id de Materia</th>
+      <th>Nombre del Tema</th>
+      <th>Nombre de la Materia</th>
       <th>Dificultad</th>
       <th>Id de Profesor</th>
       <th>Tipo de Pregunta</th>
       <th>Pregunta</th>
-      <th></th>
+      <th>Veces Utilizada</th>
+      <th>Usada Por</th>
     </tr>
 <?php
 session_start();
@@ -70,15 +71,38 @@ $preguntas = $query->fetchAll();
 #echo "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
 foreach($preguntas as $pregunta) {
   #if($_SESSION['username'] != $pregunta['Cedula']){
+  $nombrematquery = $connection->getConnection()->prepare("SELECT \"Nombre\" FROM \"Materia\" WHERE \"IdMateria\" =".$pregunta['IdMateria']);
+  $nombrematquery->execute();
+  $nombremat=$nombrematquery->fetchAll();
+  $nombremat=$nombremat[0]['Nombre'];
+  $nombretemaquery = $connection->getConnection()->prepare("SELECT \"NombreTema\" FROM \"Tema\" WHERE \"IdTema\" =".$pregunta['IdTema']);
+  $nombretemaquery->execute();
+  $nombretema=$nombretemaquery->fetchAll();
+  $nombretema=$nombretema[0]['NombreTema'];
+
+  $usadaquery = $connection->getConnection()->prepare("SELECT * FROM \"UsoPreguntas\" WHERE \"IdPregunta\" =".$pregunta['IdPregunta'] ." GROUP BY \"IdPregunta\", \"IdUsuario\"");
+  $usadaquery->execute();
+  $usopregunta = $usadaquery->fetchAll();
+
     $string = '';
     $string .= "<tr><td>".$pregunta['IdPregunta'];
-    $string .= "</td><td>".$pregunta['IdTema'];
-    $string .= "</td><td>".$pregunta['IdMateria'];
+    $string .= "</td><td>".$nombretema;
+    $string .= "</td><td>".$nombremat;
     $string .= "</td><td>".$pregunta['Dificultad'];
     $string .= "</td><td>".$pregunta['IdProfesor'];
     $string .= "</td><td>".$pregunta['Tipo_Pregunta'];
-    $string .= "</td><td>".$pregunta['Textopregunta']."</td>";
+    $string .= "</td><td>".$pregunta['Textopregunta'];
+    $string .= "</td><td>".$pregunta['Vecesutilizada']."</td>";
+
     echo $string;
+    echo "<td><table>";
+    foreach ($usopregunta as $fila) {
+    #print_r($fila);
+    $stringuso = '';
+    $stringuso .= "<tr><td>".$fila['IdUsuario']."</td></tr></table></td></tr>";
+    echo $stringuso;
+
+    }
 }
 echo "</table>";
 ?>

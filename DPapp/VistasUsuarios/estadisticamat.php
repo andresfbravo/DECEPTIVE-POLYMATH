@@ -40,6 +40,7 @@
       <th>Nombre</th>
       <th>Cantidad de Preguntas</th>
       <th>Dificultad</th>
+      <th>Preguntas Usadas</th>
     </tr>
 <?php
 session_start();
@@ -64,16 +65,93 @@ $materias = $query->fetchAll();
 #print_r($materias);
 #echo "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
 foreach($materias as $materia) {
-  #if($_SESSION['username'] != $materia['Cedula']){
+#if($_SESSION['username'] != $materia['Cedula']){
     $string = '';
     $string .= "<tr><td>".$materia['Nombre'];
     $string .= "</td><td>".$materia['CantidadPreguntas'];
-    $string .= "</td><td>".$materia['Dificultad']."</td>";
+    $string .= "</td><td>".$materia['Dificultad'];
+    $string .= "</td><td>".$materia['NumeroPreguntasUsadas']."</td></tr>";
     echo $string;
 }
 echo "</table>";
 ?>
 </table>
+<div class="Tabla1" style='display:none'>
+  <table>
+      <tr>
+        <th>Id de Pregunta</th>
+        <th>NombreTema</th>
+        <th>Pregunta</th>
+        <th>Veces Utilizada</th>
+        <th></th>
+      </tr>
+  <?php
+  $connection = new Connection();
+  $idusuario = $_SESSION['username'];
+  $idmateria = $_GET['idMateria'];
+  $query = $connection->getConnection()->prepare("SELECT * FROM \"Preguntas\" WHERE \"IdMateria\" = $idmateria and \"Vecesutilizada\" >=1 ");
+  $query->execute();
+  $preguntas = $query->fetchAll();
+  #print_r($preguntas);
+  #echo "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
+  foreach($preguntas as $pregunta) {
+    $nombretemaquery = $connection->getConnection()->prepare("SELECT \"NombreTema\" FROM \"Tema\" WHERE \"IdTema\" =".$pregunta['IdTema']);
+    $nombretemaquery->execute();
+    $nombretema=$nombretemaquery->fetchAll();
+    $nombretema=$nombretema[0]['NombreTema'];
+      $string = '';
+      $string .= "<tr><td>".$pregunta['IdPregunta'];
+      $string .= "</td><td>".$nombretema;
+      $string .= "</td><td>".$pregunta['Textopregunta'];
+      $string .= "</td><td>".$pregunta['Vecesutilizada']."</td>";
+
+      echo $string;
+  }
+  echo "</table>";
+
+
+  ?>
+  </table>
+</div>
+
+<div class="Tabla2">
+  <table>
+      <tr>
+        <th>Id de Pregunta</th>
+        <th>NombreTema</th>
+        <th>Pregunta</th>
+        <th>Veces Utilizada</th>
+        <th></th>
+      </tr>
+  <?php
+  $connection = new Connection();
+  $idusuario = $_SESSION['username'];
+  $idmateria = $_GET['idMateria'];
+  $query = $connection->getConnection()->prepare("SELECT * FROM \"Preguntas\" WHERE \"IdMateria\" = $idmateria ");
+  $query->execute();
+  $preguntas = $query->fetchAll();
+  #print_r($preguntas);
+  #echo "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
+  foreach($preguntas as $pregunta) {
+    $nombretemaquery = $connection->getConnection()->prepare("SELECT \"NombreTema\" FROM \"Tema\" WHERE \"IdTema\" =".$pregunta['IdTema']);
+    $nombretemaquery->execute();
+    $nombretema=$nombretemaquery->fetchAll();
+    $nombretema=$nombretema[0]['NombreTema'];
+      $string = '';
+      $string .= "<tr><td>".$pregunta['IdPregunta'];
+      $string .= "</td><td>".$nombretema;
+      $string .= "</td><td>".$pregunta['Textopregunta'];
+      $string .= "</td><td>".$pregunta['Vecesutilizada']."</td>";
+
+      echo $string;
+  }
+  echo "</table>";
+
+
+  ?>
+  </table>
+
+</div>
 
 </body>
 </html>

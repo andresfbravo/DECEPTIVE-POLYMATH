@@ -39,6 +39,7 @@
     <tr>
       <th>Id de Pregunta</th>
       <th>Id de Materia</th>
+      <th>Nombre Materia</th>
       <th></th>
     </tr>
 <?php
@@ -63,10 +64,15 @@ $preguntas = $query->fetchAll();
 #print_r($preguntas);
 #echo "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
 foreach($preguntas as $pregunta) {
+  	$nombrematquery = $connection->getConnection()->prepare("SELECT \"Nombre\" FROM \"Materia\" WHERE \"IdMateria\" =".$pregunta['IdMateria']);
+    $nombrematquery->execute();
+    $nombremat=$nombrematquery->fetchAll();
+    $nombremat=$nombremat[0]['Nombre'];
   #if($_SESSION['username'] != $pregunta['Cedula']){
     $string = '';
     $string .= "<tr><td>".$pregunta['IdPregunta'];
-    $string .= "</td><td>".$pregunta['IdMateria']."</td>";
+    $string .= "</td><td>".$pregunta['IdMateria'];
+    $string .= "</td><td>".$nombremat."</td>";
     echo $string;
    #}
      echo "<td><a href='estadisticapreg.php?idPregunta=".$pregunta['IdPregunta']."'>Estadistica</a></td></tr>";

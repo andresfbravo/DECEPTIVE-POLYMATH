@@ -46,6 +46,17 @@ try {
 		}
 	}
 	$arraytoinsert.="}";
+	$getmaterias = $connection->getConnection()->prepare("SELECT * FROM \"Materia\"");
+	$getmaterias->execute();
+	$materias = $getmaterias->fetchAll();
+	foreach ($materias as $materia) {
+		$countvecesquery = $connection->getConnection()->prepare("SELECT COUNT(*) FROM \"Preguntas\" WHERE \"Vecesutilizada\" >= 1 and \"IdMateria\"=".$materia['IdMateria'] );
+		$countvecesquery->execute();
+		$veces = $countvecesquery->fetchAll();
+		$veces = $veces[0][0];
+		$updatemateriaquery = $connection->getConnection()->prepare("UPDATE \"Materia\"SET \"NumeroPreguntasUsadas\" = $veces WHERE \"IdMateria\"=". $materia['IdMateria']);
+		$updatemateriaquery->execute();
+	}
 	$examenquery = $connection->getConnection()->prepare("INSERT INTO \"Examen\"(\"Preguntas\",\"IdUsuario\") VALUES(:Preguntas, :IdUsuario)");
 	$examenquery->bindValue(':Preguntas', $arraytoinsert);
 	$examenquery->bindValue(':IdUsuario', $_SESSION['username']);
@@ -58,7 +69,7 @@ try {
 	$connection->getConnection()->commit();
 } catch (PDOException $e) {
 	$connection->getConnection()-> rollback();
-	#echo "Error en la generación ...".$e->getMessage();
+	#	echo "Error en la generación ...".$e->getMessage();
 	echo "<script>
 	alert('Error al generar examen, intente de nuevo.');
 	window.location.href = 'http://localhost/deceptive-polymath/DPapp/Generarexamen.php';
