@@ -25,18 +25,22 @@ $query->execute();
 try {
 	$arraytoinsert = "{";
 	$lastElement = end($_SESSION['preguntas']);
-
+	$dificultadpromedio = 0;
+	$numeropreguntas = 0;
 	foreach($_SESSION['preguntas'] as $pregunta){
 		$preguntaquery = $connection->getConnection()->prepare("INSERT INTO \"UsoPreguntas\"(\"IdPregunta\",\"IdUsuario\") VALUES(:IdPregunta, :IdUsuario)");
 		$preguntaquery->bindValue(':IdPregunta', $pregunta);
 		$preguntaquery->bindValue(':IdUsuario', $_SESSION['username']);
 		$preguntaquery->execute();
 
-		$preguntavecesquery = $connection->getConnection()->prepare("SELECT \"Vecesutilizada\" FROM \"Preguntas\" WHERE \"IdPregunta\" = $pregunta");
+		$preguntavecesquery = $connection->getConnection()->prepare("SELECT \"Vecesutilizada\", \"Dificultad\" FROM \"Preguntas\" WHERE \"IdPregunta\" = $pregunta");
 		$preguntavecesquery->execute();
 		$vecesutilizada = $preguntavecesquery->fetchAll();
+		$dificultadpromedio = $dificultadpromedio + $vecesutilizada[0]['Dificultad'];
+		$numeropreguntas = $numeropreguntas + 1;
 		$vecesutilizada = $vecesutilizada[0]['Vecesutilizada'];
 		$vecesutilizada = $vecesutilizada + 1;
+
 		$preguntaupdatequery = $connection->getConnection()->prepare("UPDATE \"Preguntas\"SET \"Vecesutilizada\" = $vecesutilizada WHERE \"IdPregunta\" = $pregunta");
 		$preguntaupdatequery->execute();
 		if($pregunta != $lastElement){
@@ -57,10 +61,24 @@ try {
 		$updatemateriaquery = $connection->getConnection()->prepare("UPDATE \"Materia\"SET \"NumeroPreguntasUsadas\" = $veces WHERE \"IdMateria\"=". $materia['IdMateria']);
 		$updatemateriaquery->execute();
 	}
-	$examenquery = $connection->getConnection()->prepare("INSERT INTO \"Examen\"(\"Preguntas\",\"IdUsuario\") VALUES(:Preguntas, :IdUsuario)");
-	$examenquery->bindValue(':Preguntas', $arraytoinsert);
-	$examenquery->bindValue(':IdUsuario', $_SESSION['username']);
-	$examenquery->execute();
+	$checkquery =  $connection->getConnection()->prepare("SELECT * FROM \"Examen\" WHERE \"Preguntas\" = '$arraytoinsert'");
+	$checkquery->execute();
+	$dificultadpromedio = $dificultadpromedio / $numeropreguntas;
+	if($checkquery->rowCount()>0){
+			$checkqueryresult = $checkquery->fetchAll();
+			$checkqueryresult = $checkqueryresult[0];
+			$vecesgenerado = $checkqueryresult['Vecesgenerado'];
+			$vecesgenerado = $vecesgenerado + 1;
+			$examenquery =  $connection->getConnection()->prepare("UPDATE \"Examen\" SET \"Vecesgenerado\" = $vecesgenerado WHERE \"IdParcial\" =". $checkqueryresult['IdParcial']);
+			$examenquery->execute();
+	}
+	else{
+		$examenquery =  $connection->getConnection()->prepare("INSERT INTO \"Examen\"(\"Preguntas\",\"IdUsuario\", \"Dificultad\") VALUES(:Preguntas, :IdUsuario,:Dificultad)");
+		$examenquery->bindValue(':Preguntas', $arraytoinsert);
+		$examenquery->bindValue(':IdUsuario', $_SESSION['username']);
+		$examenquery->bindValue(':Dificultad', $dificultadpromedio);
+		$examenquery->execute();
+	}
 	$results = $query->fetchAll();
 
 	#print_r($arraytoinsert);
@@ -69,11 +87,11 @@ try {
 	$connection->getConnection()->commit();
 } catch (PDOException $e) {
 	$connection->getConnection()-> rollback();
-	#	echo "Error en la generación ...".$e->getMessage();
-	echo "<script>
+	echo "Error en la generación ...".$e->getMessage();
+	/*echo "<script>
 	alert('Error al generar examen, intente de nuevo.');
 	window.location.href = 'http://localhost/deceptive-polymath/DPapp/Generarexamen.php';
-</script>";
+</script>";*/
 }
 
 	?>

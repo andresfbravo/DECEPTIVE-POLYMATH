@@ -20,8 +20,8 @@
   font-family: monospace;
   font-size: 12px;
   text-align: center;
-  margin-left:10px;
-  margin-right: 20 px;
+  margin-left: auto;
+  margin-right: auto;
     }
  th {
   background-color: #588c7e;
