@@ -13,6 +13,10 @@ $s= "";
 foreach($results as $row) {
     $s.= $_SESSION['numeracion'].". ".$row ['Textopregunta'];
 }
+if(!in_array($pregunta,$_SESSION['preguntas'])){
+  array_push($_SESSION['preguntas'],$pregunta);
+}
 $_SESSION['numeracion'] = $_SESSION['numeracion'] + 1;
+
 echo json_encode($s);
 ?>

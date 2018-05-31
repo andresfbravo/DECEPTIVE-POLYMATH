@@ -25,6 +25,7 @@
 <?php
 session_start();
 $_SESSION['numeracion'] = 1;
+$_SESSION['preguntas'] = array();
 if(!($_SESSION['login'])){
   header('location: http://localhost/deceptive-polymath/DPapp/');
  }
@@ -38,7 +39,6 @@ elseif($_SESSION['tipo_usuario'] == 'Profesor'):
  require_once 'VistasUsuarios/barramenuprof.php';
 endif;
 ?>
-
   <div class="container">
   <div class="row">
     <div class="jumbotron">
@@ -79,20 +79,17 @@ endif;
 
             </select>
           </p>
-          
+
           <p>
             <label for = "textopregunta">Texto de la Pregunta: </label>
             <textarea id ="textopregunta" name="textopregunta" rows="10" cols="70" placeholder="Descripcion de la pregunta"></textarea>
           </p>
           <button type="button" id="agregar" class="logout btn-primary">Agregar pregunta</button>
-          <button type="sumit" id="imprimir" class="logout btn-primary">Imprimir</button>
+          <button type="sub oninvalid="  oninvalid="""mit" id="imprimir" class="logout btn-primary">Imprimir</button>
         </fieldset>
       </form>
     </div>
   </div>
 </div>
-<script type="text/javascript">
-
-</script>
 </body>
 </html>
