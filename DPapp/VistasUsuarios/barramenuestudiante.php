@@ -13,7 +13,7 @@ margin-top:10px;
 				<li><a href="/deceptive-polymath/DPapp/VistasUsuarios/Vistaestudiante.php">Inicio</a></li>
 				<li><a href="/deceptive-polymath/DPapp/VistasUsuarios/Revisarpreguntas.php">Revisar preguntas</a><li>
 				<li><a href="/deceptive-polymath/DPapp/Sugerirpregunta.php">Realizar Sugerencia</a><li>
-				<li><a href="/deceptive-polymath/DPapp/Generarexamen.php">Generar Examen</a></li>
+				<li><a href="/deceptive-polymath/DPapp/GenerarexamenEstu.php">Generar Examen</a></li>
 			</ul>
 			<ul class = "nav navbar-nav navbar-right">
 				<a href = "/deceptive-polymath/DPapp/logout.php" style="color: #FAFAFA">
