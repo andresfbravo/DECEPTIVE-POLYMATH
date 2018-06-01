@@ -32,7 +32,7 @@
 					<fieldset>
 						<p>
 							<label for = "userid">Documento de Identificación: </label>
-							<input type="number" min="999999" maxlength="10" class = "form-control" placeholder="Cedula de Ciudadania" id = "userid" name="userid" pattern="[0-9]*" required = "true"/>
+							<input type="number" min="999999" max="1999999999" maxlength="10" class = "form-control" placeholder="Cedula de Ciudadania" id = "userid" name="userid" pattern="[0-9]*" required = "true"/>
 						</p>
 						<p>
 

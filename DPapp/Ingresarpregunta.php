@@ -73,7 +73,7 @@ if(!($_SESSION['login'])){
           </p>
           <p>
             <label for = "dificultad">Dificultad: </label>
-            <input type="number" class = "form-control" placeholder="50-150" id = "dificultad" name="dificultad" pattern= "[0-9]{2,3}" required = "true"/>
+            <input type="number" class = "form-control" placeholder="1-150" id = "dificultad" min="1" max="151" name="dificultad" pattern= "[0-9]{2,3}" required = "true"/>
           </p>
           <p>
             <label for = "tipopregunta">Tipo de Pregunta: </label>
