@@ -66,7 +66,7 @@ color: #FAFAFA;
       <div class="btn-group" style="width:100%">
       <a href="/deceptive-polymath/DPapp/VistasUsuarios/Estadisticaspreguntas.php" style="color: #FAFAFA"><button style="color: #FAFAFA"> Por Pregunta</button></a>
       <a href="/deceptive-polymath/DPapp/VistasUsuarios/Estadisticasmaterias.php" style="color: #FAFAFA"><button style="color: #FAFAFA">Por Materia</button></a>
-      <a href="/deceptive-polymath/DPapp/Estadisticasparciales.php" style="color: #FAFAFA"><button style="color: #FAFAFA">Por Parcial</button></a>
+      <a href="/deceptive-polymath/DPapp/Estadisticasparciales.php" style="color: #FAFAFA"><button style="color: #FAFAFA">Por Examen</button></a>
       </div>
 		</div>
 	</div>

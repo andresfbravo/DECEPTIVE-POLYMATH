@@ -44,10 +44,10 @@
 </div>
 <table style="margin-bottom: 30px;">
     <tr>
-      <th>Id Parcial</th>
+      <th>Id Examen</th>
       <th>Cantidad de Preguntas</th>
       <th>Dificultad</th>
-      <th>Vecesgenerado</th>
+      <th>Cuantas veces se ha generado</th>
     </tr>
 <?php
 session_start();
