@@ -61,7 +61,7 @@ elseif($_SESSION['tipo_usuario'] == 'Profesor'):
 endif;
 require_once '../classes/connection.php';
 $connection = new Connection();
-$query = $connection->getConnection()->prepare("SELECT * FROM \"Preguntas\" ");
+$query = $connection->getConnection()->prepare("SELECT * FROM \"Preguntas\" ORDER BY \"IdPregunta\"");
 $query->execute();
 $preguntas = $query->fetchAll();
 #print_r($preguntas);

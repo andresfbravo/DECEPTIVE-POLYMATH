@@ -9,6 +9,7 @@ $sugerencia->setIdProfesor($_SESSION['username']);
 $sugerencia->setCorte($_POST['corte']);
 $sugerencia->setTipoPregunta($_POST['tipopregunta']);
 $sugerencia->setTextopregunta($_POST['textopregunta']);
+$sugerencia->setTextorespuesta($_POST['textorespuesta']);
 
 #print_r($usuario);
 $sugerencia->saveSugerencia();

@@ -170,6 +170,7 @@ class Pregunta
 			$dificultadmat = $dificultadmat * $cantpreguntasmat;
 			$cantpreguntasmat = $cantpreguntasmat + 1;
 			$dificultadmat = ($dificultadmat + $Dificultad) / $cantpreguntasmat;
+			$dificultadmat = round($dificultadmat);
 			$updatemat = $connection->getConnection()->prepare("UPDATE \"Materia\" SET \"CantidadPreguntas\" = $cantpreguntasmat, \"Dificultad\" = $dificultadmat WHERE \"IdMateria\" = $IdMateria" );
 			$updatemat->execute();
 			$temaquery = $connection->getConnection()->prepare("SELECT \"CantidadPreguntas\", \"Dificultad\" FROM \"Tema\" WHERE \"IdMateria\" = :IdMateria");
@@ -181,12 +182,13 @@ class Pregunta
 			$dificultadtema = $dificultadtema * $cantpreguntastema;
 			$cantpreguntastema = $cantpreguntastema + 1;
 			$dificultadtema = ($dificultadtema + $Dificultad) / $cantpreguntastema;
+			$dificultadtema = round($dificultadtema);
 			$updatetema = $connection->getConnection()->prepare("UPDATE \"Tema\" SET \"CantidadPreguntas\" = $cantpreguntastema, \"Dificultad\" = $dificultadtema WHERE \"IdTema\" = $IdTema" );
 			$updatetema->execute();
 			$connection->getConnection()->commit();
 			echo "<script>
 			alert('Pregunta registrada exitosamente.');
-			
+
 			</script>";
 
 		} catch (PDOException $e){
@@ -196,7 +198,7 @@ class Pregunta
 			alert('Error al registrar, intente de nuevo.');
 			window.location.href = 'http://localhost/deceptive-polymath/DPapp/Ingresarpregunta.php';
 			</script>";
-			
+
 
 		}
 

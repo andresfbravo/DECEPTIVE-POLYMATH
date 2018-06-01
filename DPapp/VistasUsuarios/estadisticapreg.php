@@ -64,7 +64,7 @@ require_once '../classes/connection.php';
 $connection = new Connection();
 $idusuario = $_SESSION['username'];
  $idpregunta = $_GET['idPregunta'];
-$query = $connection->getConnection()->prepare("SELECT * FROM \"Preguntas\" WHERE \"IdProfesor\" = $idusuario and \"IdPregunta\" = $idpregunta");
+$query = $connection->getConnection()->prepare("SELECT * FROM \"Preguntas\" WHERE \"IdProfesor\" = $idusuario and \"IdPregunta\" = $idpregunta ORDER BY \"IdPregunta\"");
 $query->execute();
 $preguntas = $query->fetchAll();
 #print_r($preguntas);

@@ -12,6 +12,7 @@ class Sugerencia
 	private $IdProfesor;
 	private $Tipo_pregunta;
 	private $Textopregunta;
+	private $Textorespuesta;
 	function __construct()
 	{
 
@@ -19,6 +20,14 @@ class Sugerencia
 
 	function getIdTema(){
 		return $this->IdTema;
+	}
+
+	function getTextoRespuesta(){
+		return $this->Textorespuesta;
+	}
+
+	function setTextoRespuesta($Textorespuesta){
+		$this->Textorespuesta = $Textorespuesta;
 	}
 
 	function getIdMateria(){
@@ -85,7 +94,7 @@ class Sugerencia
 		try{
 			$connection = new Connection();
 			$connection->getConnection()->beginTransaction();
-			$query = $connection->getConnection()->prepare("INSERT INTO \"Sugerencia\"(\"NombreMateria\",\"IdTema\",\"Dificultad\",\"IdMateria\",\"Corte\", \"IdUsuario\",\"Fecha\", \"Tipo_pregunta\", \"Textopregunta\", \"Aceptacion\", \"NombreTema\") VALUES (:Nombre, :IdTema, :Dificultad, :IdMateria, :Corte, :IdUsuario, :Fecha, :TipoPregunta, :Textopregunta, :Aceptacion, :NombreTema)");
+			$query = $connection->getConnection()->prepare("INSERT INTO \"Sugerencia\"(\"NombreMateria\",\"IdTema\",\"Dificultad\",\"IdMateria\",\"Corte\", \"IdUsuario\",\"Fecha\", \"Tipo_pregunta\", \"Textopregunta\", \"Aceptacion\", \"NombreTema\",\"Textorespuesta\") VALUES (:Nombre, :IdTema, :Dificultad, :IdMateria, :Corte, :IdUsuario, :Fecha, :TipoPregunta, :Textopregunta, :Aceptacion, :NombreTema,:Textorespuesta)");
 
 			$IdTema = $this->getIdTema();
       $IdUsuario = $_SESSION['username'];
@@ -108,6 +117,7 @@ class Sugerencia
 			$IdProfesor = $this->getIdProfesor();
 			$Tipo_pregunta = $this->getTipoPregunta();
 			$Textopregunta = $this->getTextoPregunta();
+			$Textorespuesta = $this->getTextoRespuesta();
       $query->bindValue(':Nombre', $Nombre);
       $query->bindValue(':NombreTema', $NombreTema);
       $query->bindValue(':Dificultad', $Dificultad);
@@ -119,12 +129,13 @@ class Sugerencia
       $query->bindValue(':Fecha', $Fecha);
 			$query->bindValue(':TipoPregunta', $Tipo_pregunta);
 			$query->bindValue(':Textopregunta', $Textopregunta);
+			$query->bindValue(':Textorespuesta', $Textorespuesta);
 			$query->execute();
 
 			$connection->getConnection()->commit();
 			echo "<script>
 			alert('Pregunta registrada exitosamente.');
-			window.location.href = 'http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Vistaadministrador.php';
+			window.location.href = 'http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Vistaestudiante.php';
 			</script>";
 
 		} catch (PDOException $e){

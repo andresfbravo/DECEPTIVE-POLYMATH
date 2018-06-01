@@ -58,7 +58,7 @@ endif;
 require_once '../classes/connection.php';
 $connection = new Connection();
 $idusuario = $_SESSION['username'];
-$query = $connection->getConnection()->prepare("SELECT * FROM \"Preguntas\" WHERE \"IdProfesor\" = $idusuario");
+$query = $connection->getConnection()->prepare("SELECT * FROM \"Preguntas\" WHERE \"IdProfesor\" = $idusuario ORDER BY \"IdPregunta\"");
 $query->execute();
 $preguntas = $query->fetchAll();
 #print_r($preguntas);

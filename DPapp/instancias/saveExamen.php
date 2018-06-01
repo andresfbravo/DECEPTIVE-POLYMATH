@@ -1,21 +1,6 @@
-<?php
-require_once '../classes/examen.php';
-
-session_start();
-$examen = new Examen();
-$examen->setIdProfesor($_SESSION['username']);
-$examen->setIdMateria($_POST['materia']);
-$examen->setIdTema($_POST['tema']);
-#$examen->setDificultad($_POST['dificultad']);
-#$examen->setTipoPregunta($_POST['Tipo_pregunta']);
-#$examen->setTextopregunta($_POST['textopregunta']);
-#print_r($usuario);
-$examen->saveExamen();
-
-
-?>
 <body onload="javascript:window.print();">
 	<?php
+	session_start();
 	require_once '../classes/connection.php';
 $connection = new Connection();
 $connection->getConnection()->beginTransaction();
@@ -64,6 +49,7 @@ try {
 	$checkquery =  $connection->getConnection()->prepare("SELECT * FROM \"Examen\" WHERE \"Preguntas\" = '$arraytoinsert'");
 	$checkquery->execute();
 	$dificultadpromedio = $dificultadpromedio / $numeropreguntas;
+	$dificultadpromedio = round($dificultadpromedio);
 	if($checkquery->rowCount()>0){
 			$checkqueryresult = $checkquery->fetchAll();
 			$checkqueryresult = $checkqueryresult[0];

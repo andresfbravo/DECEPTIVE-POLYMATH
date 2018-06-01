@@ -73,7 +73,10 @@ $parciales = $query->fetchAll();
 foreach($parciales as $parcial) {
     $string = '';
     $string .= "<tr><td>".$parcial['IdParcial'];
-    $array = json_decode($parcial['Preguntas']);
+    $preguntas = $parcial['Preguntas'];
+    $preguntas = str_replace('{','',$preguntas);
+    $preguntas = str_replace('}','',$preguntas);
+    $array = explode(",",$preguntas);
     $string .= "</td><td>".count($array);
     $string .= "</td><td>".$parcial['Dificultad'];
     $string .= "</td><td>".$parcial['Vecesgenerado']."</td></tr>";

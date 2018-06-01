@@ -27,6 +27,19 @@ try {
   $pregunta->setTipoPregunta($preguntaresult[0]['Tipo_pregunta']);
   $pregunta->setTextopregunta($preguntaresult[0]['Textopregunta']);
   $pregunta->savePregunta();
+  $textopregunta = $pregunta->getTextoPregunta();
+  $query1 = $connection->getConnection()->prepare("SELECT * FROM \"Preguntas\" WHERE \"Textopregunta\" = '$textopregunta'");
+  $query1->execute();
+  $idPregunta=$query1->fetchAll();
+
+  $respuesta = new Respuesta();
+  #$respuesta->setIdRespuesta($_POST['respuesta']);
+  $respuesta->setIdPregunta($idPregunta[0]['IdPregunta']);
+  $respuesta->setRespuesta($preguntaresult[0]['Textorespuesta']);
+
+  #print_r($usuario);
+
+  $respuesta->saveRespuesta();
   echo "<script>
   alert('Sugerencia aceptada correctamente.');
   window.location.href = 'http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Revisarsugerencias.php';
@@ -46,7 +59,4 @@ try {
     </script>";
 
 }
-
-
-
 ?>

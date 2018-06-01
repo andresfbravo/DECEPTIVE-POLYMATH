@@ -91,6 +91,10 @@ if(!($_SESSION['login'])){
             <label for = "textopregunta">Texto de la Pregunta: </label>
             <textarea name="textopregunta" rows="10" cols="70" placeholder="Descripcion de la pregunta"></textarea>
           </p>
+          <p>
+            <label for = "textorespuesta">Texto de la Respuesta: </label>
+            <textarea name="textorespuesta" rows="10" cols="70" placeholder="Descripcion de la respuesta"></textarea>
+          </p>
         	<button type="submit" class="logout btn-primary">Sugerir</button>
         </fieldset>
       </form>
