@@ -42,7 +42,7 @@
 								<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 							<input type="password" minlength="8" maxlength="16" class="form-control" id="password" placeholder="Contraseña" name="password" required="true"/>
 						</p>
-						<button type="button" class="btn btn-primary" id ="login">LogIn</button>
+						<button type="button" class="btn btn-primary" id ="login">Log In</button>
 						<p>¿No estás registrado? <a href="signup.php">Regístrate</a></p>
 					</fieldset>
 				</form>
