@@ -19,4 +19,7 @@ if(!in_array($pregunta,$_SESSION['preguntas'])){
 $_SESSION['numeracion'] = $_SESSION['numeracion'] + 1;
 
 echo json_encode($s);
+###########
+
+
 ?>

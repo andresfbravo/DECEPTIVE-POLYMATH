@@ -3,6 +3,74 @@ require_once 'connection.php';
 /**
 *
 */
+class Respuesta{
+	private $IdRespuesta;
+	private $IdPregunta;
+	private $Respuesta;
+	function __construct()
+	{
+
+	}
+
+	function getIdRespuesta(){
+		return $this->IdRespuesta;
+	}
+
+	function getIdPregunta(){
+		return $this->IdPregunta;
+	}
+
+	function getRespuesta(){
+		return $this->Respuesta;
+	}
+
+	public function setIdRespuesta($IdRespuesta)
+	{
+		$this->IdRespuesta = $IdRespuesta;
+	}
+
+	public function setIdPregunta($IdPregunta)
+	{
+		$this->IdPregunta = $IdPregunta;
+	}
+
+	public function setRespuesta($Respuesta)
+	{
+		$this->Respuesta = $Respuesta;
+	}
+
+		public function saveRespuesta()
+	{
+		try{
+			$connection = new Connection();
+			$connection->getConnection()->beginTransaction();
+			$query1 = $connection->getConnection()->prepare("INSERT INTO \"Respuestas\"(\"IdPregunta\",\"Respuesta\") VALUES (:IdPregunta, :Respuesta)");
+
+			$IdPregunta = $this->getIdPregunta();
+			$Respuesta = $this->getRespuesta();
+			$query1->bindValue(':IdPregunta', $IdPregunta);
+			$query1->bindValue(':Respuesta', $Respuesta);
+			$query1->execute();
+			$connection->getConnection()->commit();
+			echo "<script>
+			alert('Respuesta registrada exitosamente.');
+			window.location.href = 'http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Vistaadministrador.php';
+			</script>";
+
+		} catch (PDOException $e){
+			$connection->getConnection()-> rollback();
+			echo "Error en la inserccion ...".$e->getMessage();
+			/*echo "<script>
+			alert('Error al registrar, intente de nuevo.');
+			window.location.href = 'http://localhost/deceptive-polymath/DPapp/Ingresarpregunta.php';
+			</script>";
+			*/
+
+		}
+
+	}
+}
+
 class Pregunta
 {
 	private $IdTema;
@@ -118,7 +186,7 @@ class Pregunta
 			$connection->getConnection()->commit();
 			echo "<script>
 			alert('Pregunta registrada exitosamente.');
-			window.location.href = 'http://localhost/deceptive-polymath/DPapp/VistasUsuarios/Vistaadministrador.php';
+			
 			</script>";
 
 		} catch (PDOException $e){

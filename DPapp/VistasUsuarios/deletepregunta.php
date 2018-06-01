@@ -16,6 +16,8 @@ try {
   $datos = $datos[0];
   $query = $connection->getConnection()->prepare("DELETE FROM \"Preguntas\"    WHERE \"IdPregunta\" = $idpregunta");
   $query->execute();
+  $query1 = $connection->getConnection()->prepare("DELETE FROM \"Respuestas\"    WHERE \"IdPregunta\" = $idpregunta");
+  $query1->execute();
   $IdMateria=$datos['IdMateria'];
   $IdTema = $datos['IdTema'];
   $Dificultad = $datos['Dificultad'];

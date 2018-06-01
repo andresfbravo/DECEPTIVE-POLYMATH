@@ -41,7 +41,7 @@ if(!($_SESSION['login'])){
 <div class="container">
   <div class="row">
     <div class="jumbotron">
-      <h1>Ingresar Pregunta</h1>
+      <h1>Ingresar Pregunta y respuesta respectivamente</h1>
     </div>
     <div class="col-lg-12 well">
       <form method="POST" action="../DPapp/instancias/savePregunta.php">
@@ -87,6 +87,10 @@ if(!($_SESSION['login'])){
           <p>
             <label for = "textopregunta">Texto de la Pregunta: </label>
             <textarea name="textopregunta" rows="10" cols="70" placeholder="Descripcion de la pregunta"></textarea>
+          </p>
+          <p>
+            <label for = "textorespuesta">Texto de la Respuesta: </label>
+            <textarea name="textorespuesta" rows="10" cols="70" placeholder="Descripcion de la respuesta"></textarea>
           </p>
         	<button type="submit" class="logout btn-primary">Ingresar</button>
         </fieldset>
