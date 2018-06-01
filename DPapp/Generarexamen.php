@@ -25,7 +25,9 @@
 <?php
 session_start();
 $_SESSION['numeracion'] = 1;
+$_SESSION['numeracion2'] = 1;
 $_SESSION['preguntas'] = array();
+$_SESSION['respuestas'] = array();
 if(!($_SESSION['login'])){
   header('location: http://localhost/deceptive-polymath/DPapp/');
  }
@@ -83,6 +85,10 @@ endif;
           <p>
             <label for = "textopregunta">Texto de la Pregunta: </label>
             <textarea id ="textopregunta" name="textopregunta" rows="10" cols="70" placeholder="Descripcion de la pregunta"></textarea>
+          </p>
+          <p>
+            <label for = "textorespuesta">Texto de la Respuesta: </label>
+            <textarea id ="textorespuesta" name="textorespuesta" rows="10" cols="70" placeholder="Descripcion de la respesta"></textarea>
           </p>
           <button type="button" id="agregar" class="logout btn-primary">Agregar pregunta</button>
           <button type="sub oninvalid="  oninvalid="""mit" id="imprimir" class="logout btn-primary">Imprimir</button>

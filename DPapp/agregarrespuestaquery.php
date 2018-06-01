@@ -13,12 +13,12 @@ $query1->execute();
 $results1 = $query1->fetchAll(PDO::FETCH_ASSOC);
 $s1= "";
 foreach($results as $row) {
-    $s1.= $_SESSION['numeracion'].". ".$row ['Textorespuesta'];
+    $s1.= $_SESSION['numeracion2'].". ".$row ['Textorespuesta'];
 }
 if(!in_array($respuesta,$_SESSION['respuestas'])){
   array_push($_SESSION['respuestas'],$respuesta);
 }
-$_SESSION['numeracion'] = $_SESSION['numeracion'] + 1;
+$_SESSION['numeracion2'] = $_SESSION['numeracion2'] + 1;
 
 echo json_encode($s);
 
