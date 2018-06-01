@@ -21,8 +21,8 @@
   font-family: monospace;
   font-size: 12px;
   text-align: center;
-  margin-left:10px;
-  margin-right: 20 px;
+  margin-left: auto;
+  margin-right: auto;
     }
  th {
   background-color: #588c7e;
@@ -84,6 +84,7 @@ foreach($preguntas as $pregunta) {
   $usadaquery->execute();
   $usopregunta = $usadaquery->fetchAll();
 
+
     $string = '';
     $string .= "<tr><td>".$pregunta['IdPregunta'];
     $string .= "</td><td>".$nombretema;
@@ -98,8 +99,15 @@ foreach($preguntas as $pregunta) {
     echo "<td><table>";
     foreach ($usopregunta as $fila) {
     #print_r($fila);
+    $nombreusurpadorquery = $connection->getConnection()->prepare("SELECT * FROM \"Usuario\" WHERE \"Cedula\" =".$fila['IdUsuario']);
+    $nombreusurpadorquery->execute();
+    $nombreusurpador= $nombreusurpadorquery->fetchAll();
+    $usadaquery->execute();
+    $usopregunta = $usadaquery->fetchAll();
     $stringuso = '';
-    $stringuso .= "<tr><td>".$fila['IdUsuario']."</td></tr></table></td></tr>";
+    $stringuso .= "<tr><td>".$fila['IdUsuario']."</td>";
+    $stringuso .= "<td>".$nombreusurpador[0]['Nombre']."</td>";
+    $stringuso .= "<td>".$nombreusurpador[0]['Apellido']."</td></tr></table>";
     echo $stringuso;
 
     }

@@ -59,7 +59,7 @@ color: #FAFAFA;
 			</div>
       <div class="btn-group" style="width:100%">
       <a href="/deceptive-polymath/DPapp/VistasUsuarios/Revisarpreguntas.php" style="color: #FAFAFA"><button style="color: #FAFAFA">Preguntas</button></a>
-        <a href="/deceptive-polymath/DPapp/VistasUsuarios/Revisarsugerencias.php" style="color: #FAFAFA"><button style="color: #FAFAFA">Sugerencias</button></a>
+        <a href="/deceptive-polymath/DPapp/VistasUsuarios/Revisarsugerencias.php" style="color: #FAFAFA"><button style="color: #FAFAFA">Sugerencias</button></a>		
       </div>
 		</div>
 	</div>

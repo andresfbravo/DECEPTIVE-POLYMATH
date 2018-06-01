@@ -84,6 +84,9 @@ try {
 	#print_r($arraytoinsert);
 	echo ('Examen parcial de ' . $results[0]['Nombre'] . '<br>');
 	echo nl2br($_POST['textopregunta']);
+	echo "<div class='display' style='page-break-after:always'></div>";
+	echo "Respuestas<br><br>";
+	echo nl2br($_POST['textorespuesta']);
 	$connection->getConnection()->commit();
 } catch (PDOException $e) {
 	$connection->getConnection()-> rollback();
